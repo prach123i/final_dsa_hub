@@ -1,0 +1,334 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;
+  }
+
+
+  /* Body and Background */
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+  }
+
+  header {
+  background: black;
+  color: #333;
+  position: sticky;
+  top: 0;
+  height: 80px;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none; /* Remove underline */
+  color: white;
+}
+header a{
+  text-decoration: none; /* Remove underline */
+}
+header .logo span {
+  color: #6fed6f;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  margin-left: 885px;
+  gap: 3px;
+}
+nav ul li{
+  padding: 6px;
+}
+
+header nav ul li a {
+  color: white; /* Dark color for links */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Bold links */
+  transition: color 0.3s ease; /* Smooth transition for hover */ 
+}
+
+
+header nav ul li a:hover {
+  color: #6fed6f;
+}  
+
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    height: 80px;
+  }
+
+  /* Profile Layout */
+  .container {
+    display: flex;
+    height: 100vh;/* Adjust for header height */
+    padding-top: 20px;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 250px;
+    background-color: #e2e8f0;
+    color: #333;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: width 0.3s ease;
+  }
+
+  .sidebar:hover {
+    width: 280px;
+  }
+
+  .sidebar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid green;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar img:hover {
+    transform: scale(1.1);
+  }
+
+  .sidebar a {
+    color: #333;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 12px 16px;
+    background-color: #cbd5e0;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    display: block;
+    transition: background-color 0.3s ease;
+  }
+
+  .sidebar a:hover {
+    background-color: green;
+  }
+
+  .sidebar .hover-accent:hover {
+    background-color: #e74c3c;
+  }
+
+  /* Main Content */
+  .content {
+    flex-grow: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  .content h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .content .dropdown {
+    margin-bottom: 15px;
+  }
+
+  .dropdown a {
+    font-size: 18px;
+    text-decoration: none;
+    padding: 12px;
+    display: block;
+    background-color: #f7fafc;
+    border-radius: 5px;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .dropdown a:hover {
+    background-color: green;
+    color: white;
+  }
+
+  /* Profile Styling */
+  .profile-container {
+    display: flex;
+    gap: 40px;
+    max-width: 1370px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .left-column {
+    background-color: #ffffff;
+    width: auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+    height: fit-content;
+  }
+  .background-gif {
+width: 25%;
+  /* height: 43%; */
+  border-radius: 190px;
+object-fit: cover; /* Ensures the GIF covers the entire area without distortion */
+z-index: -1; /* Keeps the GIF behind all other content */
+}
+
+
+
+   .left-column a{
+    background-color: #e74c3c;
+  color: white;
+  padding: 8px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+   }
+   .left-column a:hover{
+   color: white;
+   background-color:#d10000;
+
+   }
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 5px solid green;
+    transition: all 0.3s ease;
+  }
+
+  .profile-image:hover {
+    transform: scale(1.05);
+  }
+
+  h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 18px;
+    color: green;
+    margin-bottom: 25px;
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 13px;
+    gap: 5px;
+  }
+
+  .detail-item i {
+    color: green;
+  }
+
+  /* Right Column: Blogs */
+  .right-column {
+    flex-grow: 1;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow-y: auto ;
+    height: 100vh;
+    scrollbar-width: none;
+  }
+
+  .right-column ul {
+    list-style-type: none;
+  }
+
+ .right-column ul li {
+    padding: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .right-column ul li:hover {
+    background-color: rgb(186, 228, 186);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  }
+
+ .right-column ul li h3 a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+ .right-column ul li p {
+    color: #666;
+    font-size: 15px;
+    margin-top: 10px;
+  }
+
+  .delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+  }
+
+  .delete-btn:hover {
+    background-color: #c0392b;
+  }
+
+  .logout-btn {
+    color: green;
+  }
+
+  /* Fade In Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* popup */
+  .profile-item {
+display: block;
+padding: 8px 12px;
+text-decoration: none;
+color: black;
+font-size: 14px;
+transition: 0.2s;
+}
+
+.profile-item:hover {
+background-color: #f0f0f0;
+}

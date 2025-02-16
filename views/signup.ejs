@@ -1,0 +1,62 @@
+<!-- views/signup.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="/css/styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+    <div class="container">
+        <h1>Signup</h1>
+        <form action="/api/user/signup" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <h5 style="margin-left: 90px;">If already have account <a href="/api/user/signin">sign in</a></h5>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+    <!-- <img src="/images/helloji.gif" alt="Background GIF" class="background-gif"/> -->
+
+    <div class="container-right">
+        <h2>Welcome to DSA Hub
+        </h2>
+        <p>Sign in to continue your journey with us.</p>
+        <div class="feature-grid">
+            <div class="feature">
+              <i class="fas fa-tasks feature-icon"></i>
+              <div>
+              <h3>Curated DSA Problems</h3>
+              <p>Access questions tailored for beginners to advanced coders, categorized by difficulty and topic.</p>
+            </div>
+            </div>
+            <div class="feature">
+              <i class="fas fa-edit feature-icon"></i>
+              <div>
+              <h3>Blog Your Journey</h3>
+              <p>Share experiences, tips, and insights with others to create a collaborative learning environment.</p>
+            </div>
+            </div>
+            <div class="feature">
+              <i class="fas fa-medal feature-icon"></i>
+              <div>
+              <h3>Earn Achievements</h3>
+              <p>Track progress and earn badges as you complete challenges and contribute blogs.</p>
+            </div>
+            </div>
+</div>
+    </div>
+</body>
+</html>

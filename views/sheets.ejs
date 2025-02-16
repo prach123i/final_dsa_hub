@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Coding Sheets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/sheet.css">
+    <link rel="stylesheet" href="/css/nav.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/api/user/authfront"  rel="noopener noreferrer">
+                <div class="logo">DSA <span>Hub</span></div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="/api/user/home">Solve Questions</a></li>
+                    <li><a href="/blog/add-new">Post Blog</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons" id="auth-container">
+                <% if (user) { %>
+                    <div class="profile-container" style="position: relative;">
+                        <a href="javascript:void(0);" onclick="toggleProfileMenu()">
+                          <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 40px; border-radius: 500px; margin-right: 50px; margin-left: -45px; margin-top: 6px;"/>
+                        </a>
+                      
+                        <!-- Profile Action List (Initially Hidden) -->
+                        <div id="profile-menu" class="profile-menu" style="
+                          display: none;
+                          position: absolute;
+                          top: 50px;
+                          right: 20px;
+                          background: white;
+                          border-radius: 10px;
+                          box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+                          width: 252px;
+                          height: 330px;
+                          padding: 30px;
+                          z-index: 100;">
+                          <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 100px; border-radius: 500px; margin-left: 45px; margin-top: 6px;"/>
+                          <div style="color: black; font-weight: bold; text-align: center;"><%= user.username %></div>
+                          <div style="color: black; font-size: 10px; text-align: center;"><%= user.email %></div>
+                          <div class="divider" style=" border-bottom: 1px solid black; margin: 8px 0;"></div> 
+                          <a href="/api/user/profile" class="profile-item">View Profile</a>
+                          <a href="/api/user/profile-edit" class="profile-item">Edit Profile</a>
+                          <a href="/api/user/logout" class="profile-item">Logout</a>
+                        </div>
+                      </div>
+                <% } else { %>
+                    <a href="/api/user/signin" class="btn login-btn">Login</a>
+                    <a href="/api/user/signup" class="btn signup-btn">Signup</a>
+                <% } %>
+            </div>
+        </div>
+    </header>
+    <div class="sheet-page">
+        <%- include('./partials/nav.ejs') %>
+        <div class="right">
+            <div class="right-top">All Coding Sheets</div>
+            <div class="cards">
+                <div class="card">
+                    <a href="https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems"> <h3>Striver's SDE Sheet</h3>  </a>
+                </div>
+                <div class="card">
+                    <a href="https://leetcode.com/studyplan/top-interview-150/"><h3>Top Interview 150: Leetcode</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions"> <h3>Blind 75</h3></a>
+                </div>
+                <div class="card">
+                    <a href="https://neetcode.io/practice?tab=neetcode150"><h3>Neetcode 150</h3></a>
+                    
+                </div>
+                <div class="card">
+                    <a href="https://leetcode.com/problem-list/9x5spweh/"><h3>Dp for Beginners</h3></a>
+                 
+                </div>
+                <div class="card">
+                    <a href="https://github.com/hxu296/leetcode-company-wise-problems-2022/blob/main/companies/Amazon.csv#L2"><h3>Leetcode Company wise Questions</h3></a>
+                </div>
+            </div>
+            <div class="right-top">System Design
+                <h4>Some Important Links</h4>
+            </div>
+            <div class="links">
+                <a href="https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#system-design-topics-start-here" class="block-link">System Design Primer</a>
+                <a href="https://www.youtube.com/watch?v=-W9F__D3oY4" class="block-link">Harvard Lecture</a>
+                <a href="https://www.youtube.com/watch?v=-W9F__D3oY4" class="block-link">System Design Playlist</a>
+                <a href="https://www.youtube.com/@SDFC" class="block-link">System Design Fight Club (SDFC)</a>
+                <a href="https://www.youtube.com/@tryexponent" class="block-link">Exponent</a>
+                <a href="https://github.com/ashishps1/awesome-low-level-design/tree/main?tab=readme-ov-file" class="block-link">Awesome Low-Level Design</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        //popup
+
+function toggleProfileMenu() {
+    var menu = document.getElementById("profile-menu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  // Close menu when clicking outside
+  document.addEventListener("click", function(event) {
+    var profileContainer = document.querySelector(".profile-container");
+    var profileMenu = document.getElementById("profile-menu");
+
+    if (!profileContainer.contains(event.target)) {
+      profileMenu.style.display = "none";
+    }
+  });
+    </script>
+</body>
+</html>

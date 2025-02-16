@@ -1,0 +1,144 @@
+body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    
+    margin: 0;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-left: 110px;
+}
+
+.container {
+    width: 100%;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+}
+/* .background-gif {
+    border-radius: 191px;
+    top: 0px;
+    left: 716px;
+    width: 13%;
+    height: 25%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 1.5;
+    transform: rotate(-21deg);
+  }
+ */
+
+.container-right {
+    width: 40%;
+    background-color: green;
+    position: relative;
+    z-index: 1;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-left: 330px; /* Add spz-ace between the form and the right container */
+    height: 100vh;
+    overflow: hidden;
+}
+.feature-grid {
+    display: flex;
+    flex-direction: column; /* Makes features stack vertically */
+    gap: 20px; /* Adds spacing between features */
+}
+
+.feature {
+    display: flex;
+    align-items: center; /* Aligns icon and title in a row */
+    gap: 15px; /* Space between icon and text */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow */
+}
+
+.feature i{
+    background-color: white;
+    color: green;
+    width: 120px;
+    height: 60px;
+    font-size: 45px;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+.feature-icon {
+    font-size: 24px;
+    color: #007bff; /* Adjust color as needed */
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1rem;
+    color: #ecf0f1;
+}
+
+label {
+    display: block;
+    margin: 15px 0 5px;
+    color: #34495e;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: green;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: green;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: green;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

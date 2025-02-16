@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSA Hub - Home</title>
+  <link rel="stylesheet" href="/css/front.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<style>
+   header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0px;
+    margin-left: 825px;
+  }
+</style>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <a href="/api/user/front" target="_blank" rel="noopener noreferrer">
+        <div class="logo">DSA <span>Hub</span></div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="/api/user/home">Solve Questions</a></li>
+          <li><a href="/blog/add-new">Post Blog</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons" id="auth-container">
+        <% if (user) { %>
+          <!-- User is logged in -->
+          <div class="profile-container">
+            <a href="/api/user/profile">
+              <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 40px; border-radius: 500px;   margin-right: 65px;
+              margin-top: 6px;"/>
+            </a>
+          </div>
+          
+        <% } else { %>
+          <!-- User is not logged in -->
+          <a href="/api/user/signin" class="btn login-btn">Login</a>
+          <a href="/api/user/signup" class="btn signup-btn">Signup</a>
+        <% } %>
+      </div>
+    </div>
+  </header>
+    
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Unleash Your <span>DSA</span> Potential</h1>
+      <p>Join our vibrant community of learners to master Data Structures, Algorithms, and System Design. Enhance your problem-solving skills with hands-on practice, expert guidance, and collaborative learning.</p>
+      <div class="cta-buttons">
+        <a href="/api/user/home" class="btn-primary">Start Solving</a>
+        <a href="/blog/add-new" class="btn-secondary">Write a Blog</a>
+      </div>
+    </div>
+  </section>
+
+  <img src="/images/helloji.gif" alt="Background GIF" class="background-gif"/>
+
+  <section class="profile-page">
+    <div class="image-container">
+      <img src="/images/profile1.png" alt="Profile Picture" class="profile-image"/>
+    </div>
+  </section>
+
+  <section class="fav-sheets">
+    <h1 style="color: green; font-size: 55px; text-align: center; margin-top: 0px;">Favorite sheets</h1>
+    <div class="icon">
+      <img class="hover-effect" style="width: 134px; height: 155px; margin-left: 35px" src="/images/75.png"/>
+      <img class="hover-effect" style="width: 134px; height: 155px; margin-left: 35px" src="/images/code.png"/>
+      <img class="hover-effect" style="width: 134px; height: 155px; margin-left: 35px" src="/images/top.png"/>
+      <h3 class="hover-effect" style="width: 134px; height: 155px;  color:#2bcfe2; text-align: center; top: 35px; font-size: 25px;" >Striver's SDE Sheet</h3>
+      <img class="hover-effect" style="width: 134px; height: 155px; margin-left: 35px" src="/images/dynamic.png"/>
+
+
+    </div>    
+  </section>
+  
+
+  <section class="prep">
+    <div class="prep1">
+    <h1>Simplyfy your prep</h1>
+    <p style="color: black; margin-left: 75px;">Stay ahead of the game! Organize your questions and notes in one place for effortless review and stress-free revisions.</p>
+    <h5 style="margin-left: 75px;font-size: 20px; color: green"><a href="/api/user/home">Solve Questions</a></h5>
+   </div>
+
+   <div class="prep2">
+    <h1 style="display: flex; justify-content: center; flex-direction: column;" >
+     <img style="width: 50px; height: 50px; margin-left: 35px" src="/images/profile.png"/>
+     <p>Logic Building</p>
+     <p>Enhance your problem-solving skills with logic-based challenges.</p>
+    </h1>
+    <h1 style="display: flex; justify-content: center; flex-direction: column;" >
+      <img style="width: 50px; height: 50px; margin-left: 35px" src="/images/profile.png"/>
+      <p>Sheet Tracker</p>
+     <p>Keep track of your progress and achieve your goals efficiently.</p>
+    </h1>
+    <h1 style="display: flex; justify-content: center; flex-direction: column;" >
+      <img style="width: 50px; height: 50px; margin-left: 35px" src="/images/profile.png"/>
+      <p> Blog your ideas</p>
+     <p>Share your thoughts and inspire others with your ideas.</p>
+    </h1>
+  </div>
+  </section>
+  <div class="image-container1">
+    <img src="/images/que.png" alt="Profile Picture" class="profile-image1"/>
+  </div>
+
+  <!-- Features Section -->
+
+  <section class="features">
+    <h2><span style="color: black;">Explore</span> <span>DSA Hub</span></h2>
+    <p class="section-description" style="color: black;">Your one-stop platform for mastering DSA through interactive questions and insightful blogs.</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <i class="fas fa-tasks feature-icon"></i>
+        <h3>Curated DSA Problems</h3>
+        <p>Access questions tailored for beginners to advanced coders, categorized by difficulty and topic.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-edit feature-icon"></i>
+        <h3>Blog Your Journey</h3>
+        <p>Share experiences, tips, and insights with others to create a collaborative learning environment.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-medal feature-icon"></i>
+        <h3>Earn Achievements</h3>
+        <p>Track progress and earn badges as you complete challenges and contribute blogs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Blogs Section -->
+  <section class="blogs">
+    <h2 style="color:green; text-align: center;">What’s Trending?</h2>
+    <p class="section-description" style="color: black; text-align: center;">Discover top blogs and trending DSA solutions from our community.</p>
+    <div class="blog-carousel">
+      <div class="blog-card">
+        <h3>Understanding Greedy Algorithms</h3>
+        <p>by Alice Johnson</p>
+        <a href="/blog/1" class="btn-secondary">Read More</a>
+      </div>
+      <div class="blog-card">
+        <h3>Dynamic Programming Made Simple</h3>
+        <p>by Mark Lee</p>
+        <a href="/blog/2" class="btn-secondary">Read More</a>
+      </div>
+      <div class="blog-card">
+        <h3>Top Sorting Techniques for Interviews</h3>
+        <p>by Sarah Kim</p>
+        <a href="/blog/3" class="btn-secondary">Read More</a>
+      </div>
+      <div class="blog-card">
+        <h3>Top Sorting Techniques for Interviews</h3>
+        <p>by Sarah Kim</p>
+        <a href="/blog/3" class="btn-secondary">Read More</a>
+      </div>
+      <div class="blog-card">
+        <h3>Top Sorting Techniques for Interviews</h3>
+        <p>by Sarah Kim</p>
+        <a href="/blog/3" class="btn-secondary">Read More</a>
+      </div>
+      <div class="blog-card">
+        <h3>Top Sorting Techniques for Interviews</h3>
+        <p>by Sarah Kim</p>
+        <a href="/blog/3" class="btn-secondary">Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2 style="text-align: center ; color: green; font-size: 50px;">Frequently Asked Questions</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <h3>What is DSA Hub?</h3>
+        <p>DSA Hub is a platform designed to help learners improve their Data Structures and Algorithms (DSA) skills through curated problems, interactive blogs, and collaborative learning.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is DSA Hub free to use?</h3>
+        <p>Yes, DSA Hub is completely free for all users. You can access questions, read blogs, and track your progress without any cost.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I contribute to the platform?</h3>
+        <p>Absolutely! You can contribute by writing blogs, sharing your solutions, or providing feedback to improve the platform.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I get started?</h3>
+        <p>Simply sign up for an account and explore the platform. You can start solving questions, tracking your progress, or writing blogs right away!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 DSA Hub. All rights reserved.</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+    </div>
+  </footer>
+  <script>
+    // JavaScript to toggle FAQ visibility
+    const faqItems = document.querySelectorAll('.faq-item h3');
+    
+    faqItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+      });
+
+      document.querySelectorAll('.hover-effect').forEach(img => {
+    img.addEventListener('mousemove', e => {
+        const rect = img.getBoundingClientRect();
+        const x = e.clientX - rect.left; // Get the horizontal coordinate
+        const y = e.clientY - rect.top; // Get the vertical coordinate
+
+        // Move the image slightly based on cursor position
+        img.style.transform = `translate(${(x - rect.width / 2) / 10}px, ${(y - rect.height / 2) / 10}px) scale(1.1)`;
+    });
+
+    img.addEventListener('mouseleave', () => {
+        img.style.transform = 'scale(1)';
+    });
+});
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+header {
+    background: black;
+    color: #333;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    height: 80px;
+    padding: 15px 20px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+header .logo a {
+    text-decoration: none;
+    color: white;
+}
+
+header .logo span {
+    color: #6fed6f;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin-left: 885px;
+}
+
+header nav ul li a {
+    transition: color 0.3s;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+header nav ul li a:hover {
+    color: #6fed6f;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: green; /* Accent hover color */
+}
+
+.navbar {
+    padding: 0;
+}
+
+.profile-item {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.profile-item:hover {
+    background-color: #f0f0f0;
+}

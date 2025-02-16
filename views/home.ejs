@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head.ejs') %>
+    <title>SocialApp</title>
+    <link rel="stylesheet" href="/css/home.css"> 
+    <link rel="stylesheet" href="/css/nav.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+<style>
+  header .container{
+    max-width: none;
+  }
+  header nav ul{
+    margin-top: 8px;
+  }
+  header .logo{
+    margin-top: 7px;
+  }
+</style>
+<body>
+    <!-- Main Container -->
+    <header>
+      <div class="container">
+          <div class="logo">
+              <a href="/api/user/authfront"  rel="noopener noreferrer">DSA <span>Hub</span></a>
+          </div>
+          <nav>
+              <ul>
+                  <li><a href="/api/user/home">Solve Questions</a></li>
+                  <li><a href="/blog/add-new">Post Blog</a></li>
+              </ul>
+          </nav>
+          <div class="auth-buttons" id="auth-container">
+              <% if (user) { %>
+                  <!-- User is logged in -->
+                  <div class="profile-container">
+                      <a href="javascript:void(0);" onclick="toggleProfileMenu()">
+                        <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 40px; border-radius: 500px; margin-right: 50px; margin-left: -45px; margin-top: 6px;"/>
+                      </a>
+                    
+                      <!-- Profile Action List (Initially Hidden) -->
+                      <div id="profile-menu" class="profile-menu" style="
+                        display: none;
+                        position: absolute;
+                        top: 65px;
+                        right: 33px;
+                        background: white;
+                        border-radius: 10px;
+                        box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+                        width: 265px;
+                        height: 345px;
+                        padding: 30px;
+                        z-index: 100;">
+                        <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 100px; border-radius: 500px; margin-left: 45px; margin-top: 6px;"/>
+                        <div style="color: black; font-weight: bold; text-align: center;"><%= user.username %></div>
+                        <div style="color: black; font-size: 10px; text-align: center;"><%= user.email %></div>
+                        <div class="divider" style=" border-bottom: 1px solid black; margin: 8px 0;"></div> 
+                        <a href="/api/user/profile" class="profile-item">View Profile</a>
+                        <a href="/api/user/profile-edit" class="profile-item">Edit Profile</a>
+                        <a href="/api/user/logout" class="profile-item">Logout</a>
+                      </div>
+                    </div>
+              <% } else { %>
+                  <!-- User is not logged in -->
+                  <a href="/api/user/signin" class="btn login-btn">Login</a>
+                  <a href="/api/user/signup" class="btn signup-btn">Signup</a>
+              <% } %>
+          </div>
+      </div>
+  </header>
+
+<div class="container2">
+    <%- include('./partials/nav.ejs') %>
+        <!-- Main Content -->
+        <div class="content">
+          
+            <h1 class="text-white">Leetcode PatternWise Questions</h1>
+            <div class="progress-container">
+                <div class="progress-bar-background">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+            </div>
+            <div class="topics">
+                <div class="dropdown mt-4">
+                    <a href="#" onclick="toggleDropdown('basics')">Basics</a>
+                    <ul id="basics" class="hidden">
+                        <li> <a href="https://www.geeksforgeeks.org/problems/count-digits5716/1">
+                          <input type="checkbox" id="cntdigits" class="topic-checkbox" data-topic="cntdigits">Count digits
+                        </a></li>
+                        <li> <a href="https://www.geeksforgeeks.org/problems/swap-two-numbers3844/1">
+                          <input type="checkbox" id="swaptwonum" class="topic-checkbox" data-topic="swaptwonum"> Swap two numbers</a></li>
+                        <li><a href="https://leetcode.com/problems/reverse-integer/description/">
+                          <input type="checkbox" id="reverseint" class="topic-checkbox" data-topic="reverseint"> Reverse integer</a></li>
+                        <li> <a href="https://leetcode.com/problems/palindrome-number/description/">
+                          <input type="checkbox" id="palindrome-number" class="topic-checkbox" data-topic="palindrome-number">Palindrome number</a></li>
+                        
+                    </ul>
+                </div>
+
+                <div class="dropdown mt-4">
+                    <a href="#" onclick="toggleDropdown('twoPointer')">Two Pointer</a>
+                    <ul id="twoPointer" class="hidden">
+                        <li>
+                            <a href="https://leetcode.com/problems/reverse-prefix-of-word/description/">
+                              <input type="checkbox" id="reverse-prefix-of-word" class="topic-checkbox" data-topic="Reverse Prefix of Word">Reverse Prefix of Word</a>
+                          </li>
+                          <li>
+                            
+                            <a href="https://leetcode.com/problems/minimum-average-of-smallest-and-largest-elements/">
+                              <input type="checkbox" id="minavg" class="topic-checkbox" data-topic="Minimum Average of Smallest and Largest Elements">Minimum Average of Smallest and Largest Elements</a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/middle-of-the-linked-list/description/">
+                            <input type="checkbox" id="middle-of-the-linked-list" class="topic-checkbox" data-topic="Middle of the Linked List">
+                            Middle of the Linked List</a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/sort-colors/description/">
+                            <input type="checkbox" id="sortclr" class="topic-checkbox" data-topic="Sort Colors">
+                            Sort Colors</a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/reorder-list/description/">
+                            <input type="checkbox" id="reorder" class="topic-checkbox" data-topic="Reorder List">
+                            Reorder List</a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/">
+                            <input type="checkbox" id="remove" class="topic-checkbox" data-topic="Remove Duplicates from Sorted Array">
+                            Remove Duplicates from Sorted Array</a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/find-the-duplicate-number/description/">
+                            <input type="checkbox" id="findduplicate" class="topic-checkbox" data-topic="Find the Duplicate Number">
+                            Find the Duplicate Number</a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/3sum/description/">
+                            <input type="checkbox" id="3sum" class="topic-checkbox" data-topic="3Sum">
+                            3Sum</a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/trapping-rain-water/description/">
+                            <input type="checkbox" id="trappingrainwatr" class="topic-checkbox" data-topic="Trapping Rain Water">
+                            Trapping Rain Water</a>
+                          </li>
+                          
+                    </ul>
+                </div>
+
+                <div class="dropdown mt-4">
+                    <a href="#" onclick="toggleDropdown('Fast and Slow Pointer')">Fast and Slow Pointer</a>
+                    <ul id="Fast and Slow Pointer" class="hidden">
+                        <li>
+                            <a href="https://leetcode.com/problems/linked-list-cycle/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Linked List Cycle"> Linked List Cycle
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/linked-list-cycle-ii/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Linked List Cycle II"> Linked List Cycle II
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/palindrome-linked-list/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Palindrome Linked List"> Palindrome Linked List
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/circular-array-loop/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Circular Array Loop"> Circular Array Loop
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Convert Sorted List to Binary Search Tree"> Convert Sorted List to Binary Search Tree
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/rotate-list/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Rotate List"> Rotate List
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/odd-even-linked-list/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Odd Even Linked List"> Odd Even Linked List
+                            </a>
+                          </li>
+                          
+                    </ul>
+                </div>
+
+                <div class="dropdown mt-4">
+                    <a href="#" onclick="toggleDropdown('Take or Not Take')">Take or Not Take</a>
+                    <ul id="Take or Not Take" class="hidden">
+                        <li>
+                            <a href="https://leetcode.com/problems/sum-of-all-subset-xor-totals/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Sum of All Subset XOR Totals" /> Sum of All Subset XOR Totals
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/permutations/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Permutations" /> Permutations
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/permutations-ii/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Permutations II" /> Permutations II
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/generate-parentheses/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Generate Parentheses" /> Generate Parentheses
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/combination-sum/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Combination Sum" /> Combination Sum
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/combination-sum-ii/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Combination Sum II" /> Combination Sum II
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/combination-sum-iii/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Combination Sum III" /> Combination Sum III
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/subsets/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Subsets" /> Subsets
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/subsets-ii/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Subsets II" /> Subsets II
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/palindrome-partitioning/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Palindrome Partitioning" /> Palindrome Partitioning
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/sudoku-solver/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Sudoku Solver" /> Sudoku Solver
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/n-queens/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="N Queens" /> N Queens
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Letter Combinations of a Phone Number" /> Letter Combinations of a Phone Number
+                            </a>
+                          </li>
+                          
+                    </ul>
+                </div>
+
+                <div class="dropdown mt-4">
+                    <a href="#" onclick="toggleDropdown('Islands')">Islands</a>
+                    <ul id="Islands" class="hidden">
+                        <li>
+                            <a href="https://leetcode.com/problems/number-of-islands/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Number of Islands" /> Number of Islands
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/max-area-of-island/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Max Area of Island" /> Max Area of Island
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/number-of-closed-islands/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Number of Closed Islands" /> Number of Closed Islands
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/island-perimeter/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Island Perimeter" /> Island Perimeter
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/count-sub-islands/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Count Sub Islands" /> Count Sub Islands
+                            </a>
+                          </li>
+                          
+                    </ul>
+                </div>
+
+                <div class="dropdown mt-4">
+                    <a href="#" onclick="toggleDropdown('Top-K-Elements')">Top K Elements</a>
+                    <ul id="Top-K-Elements" class="hidden">
+                        <li>
+                            <a href="https://leetcode.com/problems/subarray-sum-equals-k/description/">
+                                <input type="checkbox" class="topic-checkbox" data-topic="Subarray Sum Equals K" /> Subarray Sum Equals K
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://leetcode.com/problems/top-k-frequent-elements/description/">
+                                <input type="checkbox" class="topic-checkbox" data-topic="Top K Frequent Elements" /> Top K Frequent Elements
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://leetcode.com/problems/subarray-sums-divisible-by-k/description/">
+                                <input type="checkbox" class="topic-checkbox" data-topic="Subarray Sums Divisible by K" /> Subarray Sums Divisible by K
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://leetcode.com/problems/reward-top-k-students/description/">
+                                <input type="checkbox" class="topic-checkbox" data-topic="Reward Top K Students" /> Reward Top K Students
+                            </a>
+                        </li>
+                    </ul>
+                  </div>
+                
+
+                <div class="dropdown mt-4">
+                    <a href="#" onclick="toggleDropdown('BFS/DFS')">BFS/DFS</a>
+                    <ul id="BFS/DFS" class="hidden">
+                        <li>
+                            <a href="https://leetcode.com/problems/binary-tree-level-order-traversal/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Binary Tree Level Order Traversal" /> Binary Tree Level Order Traversal
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Zigzag Level Order Traversal" /> Zigzag Level Order Traversal
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/binary-tree-right-side-view/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Binary Tree Right Side View" /> Binary Tree Right Side View
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Maximum Depth of Binary Tree" /> Maximum Depth of Binary Tree
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/symmetric-tree/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" /> Symmetric Tree
+                            </a>
+                          </li>   
+                    </ul>
+                </div>
+
+                <div class="dropdown mt-4">
+                    <a href="#" onclick="toggleDropdown('Backtracking')">Backtracking</a>
+                    <ul id="Backtracking" class="hidden">
+                        <li>
+                            <a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Letter Combinations of a Phone Number" /> Letter Combinations of a Phone Number
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/combination-sum-iv/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Combination Sum IV" /> Combination Sum IV
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://leetcode.com/problems/combination-sum/description/">
+                              <input type="checkbox" class="topic-checkbox" data-topic="Combination Sum" /> Combination Sum
+                            </a>
+                          </li>
+                    </ul>
+                </div>
+
+                <div class="dropdown mt-4">
+                  <a href="#" onclick="toggleDropdown('Practice Questions for OA/Conding contests')">Practice Questions for OA/Conding contests</a>
+                  <ul id="Practice Questions for OA/Conding contests" class="hidden">
+                      <li>
+                          <a href="https://lnkd.in/gHYgRDSZ">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Binary Tree Level Order Traversal" /> Dynamic Programming
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://lnkd.in/gianQPuw">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Zigzag Level Order Traversal" />Greedy Algorithms
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://lnkd.in/gcHRz5-p">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Binary Tree Right Side View" /> Graph
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://lnkd.in/gersVnrz">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Maximum Depth of Binary Tree" /> Backtracking
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://lnkd.in/gT_FhqYa">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" /> Linked List
+                          </a>
+                        </li>   
+                        <li>
+                          <a href="https://lnkd.in/gtZZc6tR">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" /> Bit Manipulation
+                          </a>
+                        </li>   
+                        <li>
+                          <a href="https://lnkd.in/gPsUh6w5">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" /> Hashtable
+                          </a>
+                        </li>   
+                        <li>
+                          <a href="https://lnkd.in/gQx74mJc">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" /> DisJoint Set
+                          </a>
+                        </li>   
+                        <li>
+                          <a href="https://lnkd.in/gRpJ6qxN">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" /> Bridges and articulation points
+                          </a>
+                        </li>   
+                        <li>
+                          <a href="https://lnkd.in/gRsxH7Th">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" /> Dijkstra Algorithm
+                          </a>
+                        </li>   
+                        <li>
+                          <a href="https://lnkd.in/gBN54_mc">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" /> Bellman ford Algorithm
+                          </a>
+                        </li>   
+                        <li>
+                          <a href="https://lnkd.in/g6zvRYbb">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" /> Floyd Warshall Algorithm
+                          </a>
+                        </li>   
+                        <li>
+                          <a href="https://lnkd.in/gBaaZCbM">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" /> Topological sort
+                          </a>
+                        </li>  
+                        <li>
+                          <a href="https://lnkd.in/gbMnsS8i">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" />Sliding Window
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://lnkd.in/gDqU7Ypy">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" />Trie
+                          </a>
+                        </li> <li>
+                          <a href="https://lnkd.in/gzrcfZtj">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" />Priority Queue
+                          </a>
+                        </li> <li>
+                          <a href="https://lnkd.in/gNsjGw8p">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" />Heaps
+                          </a>
+                        </li> <li>
+                          <a href="https://lnkd.in/g5vXWFu3 ">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" />Tree
+                          </a>
+                        </li>   
+                        <li>
+                          <a href="https://lnkd.in/gjykw7x2">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" />Binary Search
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://lnkd.in/gZeG-PXb">
+                            <input type="checkbox" class="topic-checkbox" data-topic="Symmetric Tree" />Two Pointer
+                          </a>
+                        </li>
+                  </ul>
+              </div>
+            </div>
+        </div>
+      </div>
+        <!-- End of Main Content -->
+
+
+    <script src="/js/main.js"></script>
+    <script>
+        function toggleDropdown(topic) {
+    // Get the element by the passed topic (ID)
+    var dropdownList = document.getElementById(topic);
+
+    // If the dropdown exists, toggle its visibility by removing/adding the 'hidden' class
+    if (dropdownList) {
+        dropdownList.classList.toggle('hidden');
+    }
+}
+
+//popup
+
+function toggleProfileMenu() {
+    var menu = document.getElementById("profile-menu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  // Close menu when clicking outside
+  document.addEventListener("click", function(event) {
+    var profileContainer = document.querySelector(".profile-container");
+    var profileMenu = document.getElementById("profile-menu");
+
+    if (!profileContainer.contains(event.target)) {
+      profileMenu.style.display = "none";
+    }
+  });
+    </script>
+</body>
+
+</html>

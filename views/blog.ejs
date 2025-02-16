@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add new blog page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/blog.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+   
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="/api/user/authfront"  rel="noopener noreferrer">DSA <span>Hub</span></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/api/user/home">Solve Questions</a></li>
+                    <li><a href="/blog/add-new">Post Blog</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons" id="auth-container">
+                <% if (user) { %>
+                    <!-- User is logged in -->
+                    <div class="profile-container">
+                        <a href="javascript:void(0);" onclick="toggleProfileMenu()">
+                          <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 40px; border-radius: 500px; margin-right: 50px; margin-left: -45px; margin-top: 6px;"/>
+                        </a>
+                      
+                        <!-- Profile Action List (Initially Hidden) -->
+                        <div id="profile-menu" class="profile-menu" style="
+                          display: none;
+                          position: absolute;
+                          top: 65px;
+                          right: 33px;
+                          background: white;
+                          border-radius: 10px;
+                          box-shadow: 0px 4px 6px #0000001a;
+                          width: 265px;
+                          height: 345px;
+                          padding: 30px;
+                          z-index: 100;">
+                          <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 100px; border-radius: 500px; margin-left: 45px; margin-top: 6px;"/>
+                          <div style="color: black; font-weight: bold; text-align: center;"><%= user.username %></div>
+                          <div style="color: black; font-size: 10px; text-align: center;"><%= user.email %></div>
+                          <div class="divider" style=" border-bottom: 1px solid black; margin: 8px 0;"></div> 
+                          <a href="/api/user/profile" class="profile-item">View Profile</a>
+                          <a href="/api/user/profile-edit" class="profile-item">Edit Profile</a>
+                          <a href="/api/user/logout" class="profile-item">Logout</a>
+                        </div>
+                      </div>
+                <% } else { %>
+                    <!-- User is not logged in -->
+                    <a href="/api/user/signin" class="btn login-btn">Login</a>
+                    <a href="/api/user/signup" class="btn signup-btn">Signup</a>
+                <% } %>
+            </div>
+        </div>
+    </header>
+    <div class="container2">
+        <%- include('./partials/nav.ejs') %>
+        <div class="container3 mt-3">
+            <form action="/blog" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" aria-describedby="title">
+                </div>
+                <div class="mb-3">
+                    <label for="coverImage" class="form-label">Cover Image</label>
+                    <input type="file" class="form-control" id="coverImage" name="coverImage" aria-describedby="coverImage">
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control body-textarea" id="body" name="body" placeholder="Write your blog content here..."></textarea>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function toggleProfileMenu() {
+            var menu = document.getElementById("profile-menu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener("click", function(event) {
+            var profileContainer = document.querySelector(".profile-container");
+            var profileMenu = document.getElementById("profile-menu");
+
+            if (!profileContainer.contains(event.target)) {
+                profileMenu.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

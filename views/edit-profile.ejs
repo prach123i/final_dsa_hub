@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/editprofile.css">
+</head>
+
+<body>
+    <!-- edit-profile.ejs -->
+<div class="profile-container">
+    <h1>Edit Profile</h1>
+  
+    <!-- Form to edit user details -->
+    <form action="/api/user/profile-edit" method="POST" class="edit-form">
+      <!-- Username Field (Editable) -->
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="<%= user.username %>" required />
+      </div>
+  
+      <!-- Email Field (Editable) -->
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<%= user.email %>" disabled />
+      </div>
+  
+      <!-- Optional: Password Fields (Editable) -->
+      <div class="form-group">
+        <label for="password">New Password:</label>
+        <input type="password" id="password" name="password" placeholder="Leave blank if not changing" />
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit">Save Changes</button>
+    </form>
+  
+    <!-- Cancel Button (Back to Profile) -->
+    <a href="/api/user/profile" class="cancel-button">Cancel</a>
+  </div>
+  
+</body>
+</html>
