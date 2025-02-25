@@ -198,6 +198,9 @@ header nav ul li a:hover {
   margin-left: 70px;
   margin-bottom: -4px;
 }
+.prep1 p{
+  color: black; margin-left: 75px;
+}
 .prep {
   width: 85%;
   height: 290px;
@@ -315,6 +318,12 @@ header nav ul li a:hover {
   color: green;
   margin-bottom: 15px;
 }
+.icon {
+  width: 134px;
+  height: 155px;
+  margin-left: 35px;
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -419,6 +428,7 @@ header nav ul li a:hover {
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
+ 
   .blog-carousel {
     gap: 15px;
   }
@@ -439,6 +449,34 @@ header nav ul li a:hover {
   .blog-card a {
     font-size: 0.8rem;
     padding: 8px 12px;
+  }
+  .hero h1{
+    margin-left: 50px;
+  }
+  .cta-buttons .btn-primary {
+    margin-left: 190px;
+  }
+  .profile-page{
+    margin-left: 0px;
+    width: 45rem;
+  }
+  header nav ul{
+    margin-left: 0px;
+  }
+  .hover-effect{
+    width: 100px;
+    height: 100px;
+  }
+  .prep1 h1{
+    font-size: 31px;
+    margin-left: -14px;
+  }
+  .prep1 p{
+   margin-left: 0px;
+  }
+  .profile-image1{
+    width: 44rem;
+    margin-left: -170px;
   }
 }
 
