@@ -142,3 +142,25 @@ button:hover {
         transform: translateY(0);
     }
 }
+
+@media (max-width: 768px) {
+  .main {
+    width: 90%;
+    margin-left: 0;
+  }
+
+  .container-right {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+    padding: 20px;
+  }
+
+  .feature-grid {
+    flex-direction: column;
+  }
+
+  .feature {
+    width: 100%;
+  }
+}

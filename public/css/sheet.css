@@ -185,3 +185,24 @@ transition: 0.2s;
 .profile-item:hover {
 background-color: #f0f0f0;
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .sheet-page {
+    flex-direction: column;
+  }
+
+  .right {
+    padding: 15px;
+    height: auto;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}

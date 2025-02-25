@@ -171,3 +171,24 @@ nav ul {
 .btn-primary:hover {
   background-color: #16a085;
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .container2 {
+    flex-direction: column;
+  }
+
+  .card-container {
+    margin-left: 0;
+    padding: 15px;
+  }
+
+  .blog-card {
+    width: 100%;
+  }
+}

@@ -332,3 +332,30 @@ transition: 0.2s;
 .profile-item:hover {
 background-color: #f0f0f0;
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .container {
+    flex-direction: column;
+    padding-top: 0;
+  }
+
+  .profile-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .left-column, .right-column {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .right-column {
+    height: auto;
+  }
+}

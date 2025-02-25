@@ -333,6 +333,90 @@ header nav ul li a:hover {
   .feature-icon {
     font-size: 2.5rem;
   }
+
+  header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 0;
+  }
+
+  .hero {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .hero p {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cta-buttons .btn-primary {
+    margin-left: 0;
+  }
+
+  .profile-page {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .image-container {
+    width: 100%;
+  }
+
+  .profile-image {
+    width: 100%;
+  }
+
+  .prep {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .prep1, .prep2 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .features {
+    padding: 20px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blogs {
+    padding: 20px;
+  }
+
+  .blog-carousel {
+    flex-direction: column;
+  }
+
+  .blog-card {
+    width: 100%;
+  }
+
+  .faq {
+    padding: 20px;
+  }
 }
 
 .blogs {
@@ -439,6 +523,12 @@ header nav ul li a:hover {
   .blog-card a {
     font-size: 0.8rem;
     padding: 8px 12px;
+  }
+  .image-container{
+    margin-left: 0px;
+  }
+  .image-container1{
+    margin-left: 0px;
   }
 }
 
