@@ -12,10 +12,9 @@ dotenv.config(); // Load environment variables
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-// Connect to MongoDB
-connectToMongodb(process.env.MONGODB_URI || "mongodb://localhost:27017/media")
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error("Error connecting to MongoDB:", err));
+const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/media";
+connectToMongodb(mongoUri);
+
 
 // Set EJS as the view engine
 app.set("view engine", "ejs");

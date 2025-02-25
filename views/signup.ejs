@@ -13,6 +13,12 @@
     <div class="main">
     <div class="container">
         <h1>Signup</h1>
+        <% if (typeof msg !== 'undefined') { %>
+            <p style="color: red;"><%= msg %></p>
+        <% } %>
+        <% if (typeof error !== 'undefined') { %>
+            <p style="color: red;"><%= error %></p>
+        <% } %>
         <form action="/api/user/signup" method="POST">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>

@@ -16,6 +16,12 @@
             <!-- <img src="/images/helloji.gif" alt="Background GIF" class="background-gif"/> -->
             <h1>Signin</h1>
         </div>
+            <% if (typeof msg !== 'undefined') { %>
+                <p style="color: red;"><%= msg %></p>
+            <% } %>
+            <% if (typeof error !== 'undefined') { %>
+                <p style="color: red;"><%= error %></p>
+            <% } %>
             <form action="/api/user/signin" method="POST">
                 <label for="Email">Email:</label>
                 <input type="email" id="Email" name="email" required>

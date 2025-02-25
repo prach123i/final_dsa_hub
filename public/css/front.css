@@ -82,7 +82,7 @@ header nav ul li a:hover {
 
 .hero h1 {
   font-size: 42px;
-  margin-left: 375px;
+  margin-left: 435px;
 }
 
 .hero p {
@@ -119,7 +119,7 @@ header nav ul li a:hover {
   padding: 12px 25px;
   border-radius: 5px;
   margin-right: 10px;
-  margin-left: 455px;
+  margin-left: 570px;
 }
 
 .cta-buttons .btn-primary:hover {
@@ -137,7 +137,7 @@ header nav ul li a:hover {
   width: 54rem;
   height: 27rem;
   top: 30px;
-  margin-left: 270px;
+  margin-left: 335px;
   border-radius: 20px; /* Adds rounded corners */
   overflow: hidden; /* Ensures child elements like images don't overflow the rounded corners */
   position: relative;

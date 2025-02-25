@@ -33,7 +33,7 @@ router.post("/signup", async (req, res) => {
     const { username, email, password } = req.body;
 
     let user = await User.findOne({ email });
-    if (user) return res.status(400).json({ msg: "User already registered" });
+    if (user) return res.render("signup", { msg: "User already registered", error: null });
 
     const verificationToken = crypto.randomBytes(20).toString("hex");
     const salt = await bcrypt.genSalt(10);
@@ -49,9 +49,9 @@ router.post("/signup", async (req, res) => {
 
     await sendVerificationEmail(email, verificationToken);
 
-    return res.status(201).json({ msg: "Signup successful. Check your email for verification." });
+    return res.render("signup", { msg: "Signup successful. Check your email for verification.", error: null });
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    return res.render("signup", { msg: null, error: error.message });
   }
 });
 
@@ -63,24 +63,24 @@ router.post("/signin", async (req, res) => {
 // Fetch fresh data from the database before rendering
 // const updatedUser = await User.findById(req.user.userid);
 
-    if (!user) return res.status(400).json({ msg: "User not found" });
+    if (!user) return res.render("signin", { msg: "User not found", error: null });
 
     if (!user.isVerified) {
-      return res.status(400).json({ msg: "Please verify your email before logging in." });
+      return res.render("signin", { msg: "Please verify your email before logging in.", error: null });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ msg: "Invalid email or password." });
+      return res.render("signin", { msg: "Invalid email or password.", error: null });
     }
 
     let token = jwt.sign({ email: user.email, userid: user._id }, process.env.JWT_SECRET);
     res.cookie("token", token, { httpOnly: true });
 
     // res.status(200).json({ msg: "Login successful", token });
-    res.render('authfront', { user });
+    res.render('authfront', { user, msg: null, error: null });
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    return res.render("signin", { msg: null, error: error.message });
   }
 });
 
@@ -174,12 +174,12 @@ res.render("sheets",{user});
 });
 // Signup page
 router.get("/signup", (req, res) => {
-  res.render("signup");
+  res.render("signup", { msg: null, error: null });
 });
 
 // Signin page
 router.get("/signin", (req, res) => {
-  res.render("signin");
+  res.render("signin", { msg: null, error: null });
 });
 
 router.get("/logout", function(req,res){
