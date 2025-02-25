@@ -76,15 +76,20 @@ nav ul li a:hover {
     background-color: #f0f0f0;
 }
 
-@media (max-width: 768px) {
-  header .container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+@media screen and (max-width: 768px) {
+  
+    header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    header nav ul {
+        flex-direction: row; /* Display navbar items in a row */
+        gap: 20px; /* Adjust gap between items */
+        margin-left: 0; /* Reset margin */
+    }
 
-  header nav ul {
-    flex-direction: column;
-    gap: 10px;
-    margin-left: 0;
-  }
+    header nav ul li {
+        display: inline-block; /* Ensure items are inline */
+    }
 }

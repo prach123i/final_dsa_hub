@@ -15,7 +15,6 @@ body {
     line-height: 1.6;
     min-height: 100vh;
     background: #f4f4f9;
-    overflow: hidden;
 }
 
 /* Main Container */
@@ -174,17 +173,48 @@ input[type="checkbox"] {
 #progress-text {
     margin-left: 10px;
     color: green;
+
+}
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
 }
 
-@media screen and (max-width: 768px) {
-    .container2 {
-        flex-direction: column;
-    }
 
+@media screen and (max-width: 768px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+    }
     .sidebar {
+        display: none;
         width: 100%;
         height: auto;
         padding: 15px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        background-color: black;
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .container2 {
+        flex-direction: row;
+        overflow-y: auto;
     }
 
     .content {
@@ -195,4 +225,5 @@ input[type="checkbox"] {
     .content h1 {
         font-size: 26px;
     }
+
 }

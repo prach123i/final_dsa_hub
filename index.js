@@ -7,6 +7,7 @@ import Blog from "./models/blog.js";
 import cookieParser from "cookie-parser";
 import dotenv from 'dotenv'; // Import dotenv for environment variables
 import session from "express-session";
+import MongoStore from "connect-mongo";
 dotenv.config(); // Load environment variables
 
 const app = express();
@@ -14,7 +15,6 @@ const PORT = process.env.PORT || 8000;
 
 const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/media";
 connectToMongodb(mongoUri);
-
 
 // Set EJS as the view engine
 app.set("view engine", "ejs");
@@ -29,9 +29,21 @@ app.use(session({
   secret: process.env.JWT_SECRET,
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // set to true in production with HTTPS
+  cookie: { secure: false }, // set to true in production with HTTPS
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI, // Use your MongoDB connection string
+    collectionName: 'sessions'
+  })
 }));
 
+// Middleware to check if user is authenticated
+function checkAuthentication(req, res, next) {
+  if (req.session.user) {
+    next();
+  } else {
+    res.redirect('/front');
+  }
+}
 
 // Route Middleware
 app.use("/api/user", userRouter);
@@ -40,15 +52,16 @@ app.use("/blog", blogRouter);
 app.set("views", path.resolve("./views"));
 
 // Routes
+app.get("/", (req, res) => {
+  res.redirect("/front");
+});
 
-app.get("/", async (req, res) => {
-  try {
-    const allBlogs = await Blog.find({});
-    res.render("signin", { blogs: allBlogs });
-  } catch (err) {
-    console.error("Error rendering signin template:", err);
-    res.status(500).send("Error rendering signin template");
-  }
+app.get("/front", (req, res) => {
+  res.render("front", { user: req.session.user });
+});
+
+app.get("/api/user/home", checkAuthentication, (req, res) => {
+  res.render("home");
 });
 
 // Global Error Handling Middleware
@@ -61,7 +74,6 @@ app.use((req, res, next) => {
   res.locals.user = req.user || null;
   next();
 });
-
 
 // Start the server
 app.listen(PORT, () => console.log(`Server started at http://localhost:${PORT}`));

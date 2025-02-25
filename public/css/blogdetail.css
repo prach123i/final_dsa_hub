@@ -61,7 +61,36 @@ p {
     background-color: #5a6268;
 }
 
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
 @media (max-width: 768px) {
+  .sidebar {
+    display: none;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: black;
+  }
+
+  .sidebar-toggle {
+    display: block;
+  }
+
   .container {
     padding: 15px;
   }
@@ -73,5 +102,32 @@ p {
 
   .author-info img {
     margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .author-info img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .img-fluid {
+    max-height: 200px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .comment-form {
+    padding: 15px;
+  }
+
+  .comment {
+    padding-bottom: 5px;
   }
 }

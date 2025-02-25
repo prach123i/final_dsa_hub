@@ -82,6 +82,20 @@ transition: all 0.3sease;
     background-color: #e74c3c;
 }
 
+/* Sidebar Toggle */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
 /* Main Content */
 .right {
     flex: 1;
@@ -188,13 +202,24 @@ background-color: #f0f0f0;
 
 @media (max-width: 768px) {
   .sidebar {
+    display: none;
     width: 100%;
     height: auto;
     padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: black;
+  }
+
+  .sidebar-toggle {
+    display: block;
   }
 
   .sheet-page {
     flex-direction: column;
+    height: auto;
   }
 
   .right {
@@ -204,5 +229,28 @@ background-color: #f0f0f0;
 
   .cards {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .nav-item {
+    font-size: 14px;
+  }
+
+  .card {
+    padding: 10px;
+  }
+
+  .right-top {
+    font-size: 30px;
+  }
+
+  .right-top h4 {
+    font-size: 12px;
   }
 }

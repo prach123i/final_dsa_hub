@@ -172,15 +172,39 @@ nav ul {
   background-color: #16a085;
 }
 
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
 @media (max-width: 768px) {
   .sidebar {
+    display: none;
     width: 100%;
     height: auto;
     padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: black;
+  }
+
+  .sidebar-toggle {
+    display: block;
   }
 
   .container2 {
     flex-direction: column;
+    height: auto;
   }
 
   .card-container {
@@ -190,5 +214,28 @@ nav ul {
 
   .blog-card {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .nav-item {
+    font-size: 14px;
+  }
+
+  .blog-card {
+    padding: 10px;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-text {
+    font-size: 0.8rem;
   }
 }

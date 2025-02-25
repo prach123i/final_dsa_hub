@@ -8,27 +8,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+<style>
+   header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0px;
+    margin-left: 825px;
+  }
+</style>
 <body>
   <!-- Header -->
-   <style>
-    .profile-item {
-  display: block;
-  padding: 8px 12px;
-  text-decoration: none;
-  color: black;
-  font-size: 14px;
-  transition: 0.2s;
-}
-
-.profile-item:hover {
-  background-color: #f0f0f0;
-}
-
-   </style>
-
   <header>
     <div class="container">
-      <a href="/api/user/authfront"  rel="noopener noreferrer">
+      <a href="/api/user/front" target="_blank" rel="noopener noreferrer">
         <div class="logo">DSA <span>Hub</span></div>
       </a>
       <nav>
@@ -37,37 +30,14 @@
           <li><a href="/blog/add-new">Post Blog</a></li>
         </ul>
       </nav>
-
       <div class="auth-buttons" id="auth-container">
         <% if (user) { %>
           <!-- User is logged in -->
-
-          <div class="profile-container" style="position: relative;">
-            <a href="javascript:void(0);" onclick="toggleProfileMenu()">
-              <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 40px; border-radius: 500px; margin-right: 35px; margin-top: 6px;"/>
+          <div class="profile-container">
+            <a href="/api/user/profile">
+              <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 40px; border-radius: 500px;   margin-right: 65px;
+              margin-top: 6px;"/>
             </a>
-          
-            <!-- Profile Action List (Initially Hidden) -->
-            <div id="profile-menu" class="profile-menu" style="
-              display: none;
-              position: absolute;
-              top: 50px;
-              right: 0;
-              background: white;
-              border-radius: 10px;
-              box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-              width: 200px;
-              height: 270px;
-              padding: 30px;
-              z-index: 100;">
-              <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 100px; border-radius: 500px; margin-left: 45px; margin-top: 6px;"/>
-              <div style="color: black; font-weight: bold; text-align: center;"><%= user.username %></div>
-              <div style="color: black; font-size: 10px; text-align: center;"><%= user.email %></div>
-              <div class="divider" style=" border-bottom: 1px solid black; margin: 8px 0;"></div> 
-              <a href="/api/user/profile" class="profile-item">View Profile</a>
-              <a href="/api/user/profile-edit" class="profile-item">Edit Profile</a>
-              <a href="/api/user/logout" class="profile-item">Logout</a>
-            </div>
           </div>
           
         <% } else { %>
@@ -83,7 +53,6 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-
       <h1>Unleash Your <span>DSA</span> Potential</h1>
       <p>Join our vibrant community of learners to master Data Structures, Algorithms, and System Design. Enhance your problem-solving skills with hands-on practice, expert guidance, and collaborative learning.</p>
       <div class="cta-buttons">
@@ -93,7 +62,6 @@
     </div>
   </section>
 
-  <!-- <img src="/images/helloji.gif" alt="Background GIF" class="background-gif"/> -->
 
   <section class="profile-page">
     <div class="image-container">
@@ -102,13 +70,15 @@
   </section>
 
   <section class="fav-sheets">
-    <h1 style="color: green; font-size: 55px; text-align: center; margin-top: 90px;">Favorite <span></span>Sheets</h1>
+    <h1 style="color: green; font-size: 55px; text-align: center; margin-top: 90px;">Favorite sheets</h1>
     <div class="icon">
       <img class="hover-effect" style="width: 134px; height: 155px; margin-left: 35px" src="/images/75.png"/>
       <img class="hover-effect" style="width: 134px; height: 155px; margin-left: 35px" src="/images/code.png"/>
       <img class="hover-effect" style="width: 134px; height: 155px; margin-left: 35px" src="/images/top.png"/>
-      <h3 class="hover-effect" style="width: 134px; height: 155px; font-family: cursive; color:#d31c90; text-align: center; top: 35px; font-size: 25px;" >Striver's SDE Sheet</h3>
+      <h3 class="hover-effect" style="width: 134px; height: 155px;  color:#2bcfe2; text-align: center; top: 35px; font-size: 25px;" >Striver's SDE Sheet</h3>
       <img class="hover-effect" style="width: 134px; height: 155px; margin-left: 35px" src="/images/dynamic.png"/>
+
+
     </div>    
   </section>
   
@@ -117,24 +87,23 @@
     <div class="prep1">
     <h1>Simplyfy your prep</h1>
     <p style="color: black; margin-left: 75px;">Stay ahead of the game! Organize your questions and notes in one place for effortless review and stress-free revisions.</p>
-    <h5 style="color: green;margin-left: 75px;
-    font-size: 20px;"><a href="/api/user/home">Solve Questions</a></h5>
+    <h5 style="margin-left: 75px;font-size: 20px; color: green"><a href="/api/user/home">Solve Questions</a></h5>
    </div>
 
    <div class="prep2">
     <h1 style="display: flex; justify-content: center; flex-direction: column;" >
-        <i style="display: inline-block; width: 50px; height: 50px; font-size: 30px; text-align: center; line-height: 50px; margin-left: 35px;" class="fas fa-brain"></i>
-     <p>Logic Building</p>
+      <i style="display: inline-block; width: 50px; height: 50px; font-size: 30px; text-align: center; line-height: 50px; margin-left: 35px;" class="fas fa-brain"></i>
+      <p>Logic Building</p>
      <p>Enhance your problem-solving skills with logic-based challenges.</p>
     </h1>
     <h1 style="display: flex; justify-content: center; flex-direction: column;" >
-        <i style="display: inline-block; width: 50px; height: 50px; font-size: 30px; text-align: center; line-height: 50px; margin-left: 35px;" class="fas fa-chart-line"></i>
-        <p>Sheet Tracker</p>
+      <i style="display: inline-block; width: 50px; height: 50px; font-size: 30px; text-align: center; line-height: 50px; margin-left: 35px;" class="fas fa-chart-line"></i>
+      <p>Sheet Tracker</p>
      <p>Keep track of your progress and achieve your goals efficiently.</p>
     </h1>
     <h1 style="display: flex; justify-content: center; flex-direction: column;" >
-        <i style="display: inline-block; width: 50px; height: 50px; font-size: 30px; text-align: center; line-height: 50px; margin-left: 35px;" class="fas fa-edit"></i>
-        <p> Blog your ideas</p>
+      <i style="display: inline-block; width: 50px; height: 50px; font-size: 30px; text-align: center; line-height: 50px; margin-left: 35px;" class="fas fa-edit"></i>
+      <p> Blog your ideas</p>
      <p>Share your thoughts and inspire others with your ideas.</p>
     </h1>
   </div>
@@ -169,27 +138,38 @@
 
   <!-- Interactive Blogs Section -->
   <section class="blogs">
-    <h2 style="text-align: center;">
-        What’s <span style="color:green;">Trending?</span>
-      </h2>
-          <p class="section-description" style="color: black; text-align: center;">Discover top blogs and trending DSA solutions from our community.</p>
+    <h2 style="color:green; text-align: center;">What’s Trending?</h2>
+    <p class="section-description" style="color: black; text-align: center;">Discover top blogs and trending DSA solutions from our community.</p>
     <div class="blog-carousel">
       <div class="blog-card">
         <h3>Understanding Greedy Algorithms</h3>
-        <a href="https://medium.com/@niraj.patil20/greedy-algorithm-47e9209a027b#:~:text=A%20greedy%20algorithm%2C%20as%20the,to%20a%20globally%2Doptimal%20solution." class="btn-secondary">Read More</a>
+        <p>by Alice Johnson</p>
+        <a href="/blog/1" class="btn-secondary">Read More</a>
       </div>
       <div class="blog-card">
         <h3>Dynamic Programming Made Simple</h3>
-        <a href="https://leetcode.com/discuss/study-guide/458695/Dynamic-Programming-Patterns" class="btn-secondary">Read More</a>
+        <p>by Mark Lee</p>
+        <a href="/blog/2" class="btn-secondary">Read More</a>
       </div>
       <div class="blog-card">
-        <h3>System Design course</h3>
-        <a href="https://designcrunch.io/" class="btn-secondary">Read More</a>
+        <h3>Top Sorting Techniques for Interviews</h3>
+        <p>by Sarah Kim</p>
+        <a href="/blog/3" class="btn-secondary">Read More</a>
       </div>
       <div class="blog-card">
-        <h3>System Design NewsLetter</h3>
-        <p>by Alex Xu</p>
-        <a href="https://blog.bytebytego.com/" class="btn-secondary">Read More</a>
+        <h3>Top Sorting Techniques for Interviews</h3>
+        <p>by Sarah Kim</p>
+        <a href="/blog/3" class="btn-secondary">Read More</a>
+      </div>
+      <div class="blog-card">
+        <h3>Top Sorting Techniques for Interviews</h3>
+        <p>by Sarah Kim</p>
+        <a href="/blog/3" class="btn-secondary">Read More</a>
+      </div>
+      <div class="blog-card">
+        <h3>Top Sorting Techniques for Interviews</h3>
+        <p>by Sarah Kim</p>
+        <a href="/blog/3" class="btn-secondary">Read More</a>
       </div>
     </div>
   </section>
@@ -218,11 +198,11 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 DSA Hub. All rights reserved. </p>
-    <p>Created by Prachi Sharma.</p>
+    <p>&copy; 2025 DSA Hub. All rights reserved.</p>
     <div class="social-links">
-      <a href="https://www.linkedin.com/in/prachish6/"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://github.com/prach123i"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
     </div>
   </footer>
   <script>
@@ -251,23 +231,6 @@
 });
     });
 
-
-    //profile popup
-    
-function toggleProfileMenu() {
-    var menu = document.getElementById("profile-menu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
-
-  // Close menu when clicking outside
-  document.addEventListener("click", function(event) {
-    var profileContainer = document.querySelector(".profile-container");
-    var profileMenu = document.getElementById("profile-menu");
-
-    if (!profileContainer.contains(event.target)) {
-      profileMenu.style.display = "none";
-    }
-  });
   </script>
 </body>
 </html>
