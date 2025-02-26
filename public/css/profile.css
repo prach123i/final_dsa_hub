@@ -15,65 +15,9 @@
     overflow-x: hidden; /* Prevent horizontal overflow */
   }
 
-  header {
-  background: black;
-  color: #333;
-  position: sticky;
-  top: 0;
-  height: 80px;
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+.container a{
+  text-decoration: none;
 }
-
-header .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none; /* Remove underline */
-  color: white;
-}
-header a{
-  text-decoration: none; /* Remove underline */
-}
-header .logo span {
-  color: #6fed6f;
-}
-
-header nav ul {
-  list-style: none;
-  display: flex;
-  margin-left: 885px;
-  gap: 3px;
-}
-nav ul li{
-  padding: 6px;
-}
-
-header nav ul li a {
-  color: white; /* Dark color for links */
-  text-decoration: none; /* Remove underline */
-  font-weight: bold; /* Bold links */
-  transition: color 0.3s ease; /* Smooth transition for hover */ 
-}
-
-
-header nav ul li a:hover {
-  color: #6fed6f;
-}  
-
-  header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    height: 80px;
-  }
-
-  /* Profile Layout */
-  .container {
-    display: flex;
-    height: 100vh;/* Adjust for header height */
-    padding-top: 20px;
-  }
 
   /* Sidebar */
   .sidebar {
