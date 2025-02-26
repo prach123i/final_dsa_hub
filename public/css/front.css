@@ -13,13 +13,14 @@ a {
   text-decoration: none;
   color: inherit;
 }
-.cta-buttons a{
-color: white;
-} 
+.cta-buttons a {
+  color: white;
+}
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Ensure wrapping on smaller screens */
 }
 
 /* Header */
@@ -47,7 +48,7 @@ header nav ul {
   list-style: none;
   display: flex;
   gap: 15px;
-  margin-left: 890px;
+  margin-left: 900px; /* Align to the right */
 }
 
 header nav ul li a {
@@ -74,52 +75,39 @@ header nav ul li a:hover {
 .hero {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 50px;
+  justify-content: center;
+  flex-direction: column; /* Stack content vertically */
+  padding: 50px 20px;
   background: linear-gradient(to right, #f0f4f8, #d9e2ec);
   color: #333;
+  text-align: center; /* Center text */
 }
 
 .hero h1 {
-  font-size: 42px;
-  margin-left: 475px;
+  font-size: 2.5rem;
 }
 
 .hero p {
-  margin-left: 65px;
-  margin-bottom: 50px;
-  text-align: center;
+  margin: 20px 0;
+  font-size: 1.2rem;
 }
 
 .hero h1 span {
   color: green;
 }
 
-.hero .hero-content {
-  max-width: 100%;
-}
-
-.hero .hero-image img {
-  width: 90%;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+.cta-buttons {
+  display: flex;
+  flex-direction: row; /* Stack buttons vertically */
+  gap: 10px;
+  width: fit-content;
+  margin-left: 40%;
 }
 
 .cta-buttons .btn-primary {
   background: green;
   padding: 12px 25px;
   border-radius: 5px;
-  margin-right: 10px;
-  margin-left: 590px;
 }
 
 .cta-buttons .btn-primary:hover {
@@ -133,15 +121,15 @@ header nav ul li a:hover {
   border-radius: 5px;
   color: green;
 }
+
 .profile-page {
-  width: 54rem;
-  height: 27rem;
-  top: 30px;
-  margin-left: 380px;
-  border-radius: 20px; /* Adds rounded corners */
-  overflow: hidden; /* Ensures child elements like images don't overflow the rounded corners */
+  width: 100%;
+  max-width: 800px; /* Limit max width */
+  margin: 30px auto;
+  border-radius: 20px;
+  overflow: hidden;
   position: relative;
-  border: 2px solid #ccc; /* Optional: Adds a border for better visibility */
+  border: 2px solid #ccc;
 }
 
 .image-container {
@@ -149,105 +137,110 @@ header nav ul li a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 54rem;
-  height: 27rem;
+  width: 100%;
+  height: auto;
 }
 
 .background-gif {
-  position: relative;
+  position: absolute;
   border-radius: 191px;
   top: -60px;
-  left: 172px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-21deg);
   width: 13%;
   height: 43%;
   object-fit: cover;
   z-index: 0;
   opacity: 1.5;
-  transform: rotate(-21deg);
 }
 
 .fav-sheets .icon {
-  text-align: right;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap; /* Ensure wrapping on smaller screens */
   margin-top: 60px;
+  margin-left: 0px;
 }
 
 .hover-effect {
-  position: relative;
   transition: transform 0.1s ease;
+  width: 155px;
 }
 
 .hover-effect:hover {
-  transform: scale(1.1); /* Slight zoom-in effect */
-  z-index: 1; /* Bring the image to the front */
+  transform: scale(1.1);
+  z-index: 1;
+}
+.icon h3 {
+  font-size: 1.5rem;
+  font-family: cursive; 
+  color:#d31c90; 
+  margin-top: 55px;
 }
 
 .profile-image {
   position: relative;
-  z-index: 1; /* Places the profile image above the GIF */
-  border-radius: 10px; /* Adds slight rounding to the main image */
-  width: 54rem; /* Adjust width as needed */
-  height: 27rem;
+  z-index: 1;
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
 }
 
-.prep1 h1 {
-  color: #333;
-  font-size: 49px;
-  margin-left: 70px;
-  margin-bottom: -4px;
-}
-.prep1 p{
-  color: black; margin-left: 75px;
-}
 .prep {
-  width: 85%;
-  height: 290px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto;
+  margin-left: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Enables wrapping to the next line */
+  flex-wrap: wrap;
   padding: 20px;
 }
 
-.prep2 h1 {
-  color: #333;
-  font-size: 15px;
-  max-width: 130px;
-}
-.prep2 h1 p {
-  margin: 0px;
-  text-align: center;
-  font-size: 10px;
-}
-.prep1,
-.prep2 {
-  flex: 1 1 45%; /* Grow, shrink, and set a base width */
+.prep1{
+  flex: 1 1 45%;
   margin: 10px;
   padding: 10px;
   box-sizing: border-box;
 }
-
-.prep1 {
-  text-align: left;
+.prep2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 50px;
+  margin-left: 50px;
 }
 
-.prep2 {
-  text-align: right;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 60px;
+.prep1 h1 {
+  color: #333;
+  font-size: 70px;
+  margin-bottom: 10px;
+}
+.prep1 h5{
+  margin-left:6px;font-size: 20px; color: green;
+}
+.prep2 h1 {
+  color: #333;
+  font-size: 1.2rem;
+  max-width: 130px;
+}
+
+.prep2 h1 p {
+  margin: 0;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
 .profile-image1 {
   position: relative;
-  z-index: 1; /* Places the profile image above the GIF */
-  border-radius: 10px; /* Adds slight rounding to the main image */
-  width: 55rem; /* Adjust width as needed */
-  height: 25rem;
-  margin-left: 420px;
+  z-index: 1;
+  border-radius: 10px;
+  width: 60%;
+  height: auto;
+  margin: 30px auto;
 }
 
 .image-container1 {
@@ -255,7 +248,7 @@ header nav ul li a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 55rem;
+  width: 100%;
   height: auto;
 }
 
@@ -318,32 +311,8 @@ header nav ul li a:hover {
   color: green;
   margin-bottom: 15px;
 }
-.icon {
-  width: 134px;
-  height: 155px;
-  margin-left: 35px;
-}
 
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .features h2 {
-    font-size: 1.8rem;
-  }
-
-  .feature h3 {
-    font-size: 1.2rem;
-  }
-
-  .feature p {
-    font-size: 0.9rem;
-  }
-
-  .feature-icon {
-    font-size: 2.5rem;
-  }
-}
-
+/* Blogs Section */
 .blogs {
   padding: 40px 20px;
   background: linear-gradient(to right, #f0f4f8, #d9e2ec);
@@ -426,67 +395,7 @@ header nav ul li a:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
- 
-  .blog-carousel {
-    gap: 15px;
-  }
-
-  .blog-card {
-    flex: 0 0 250px;
-    padding: 15px;
-  }
-
-  .blog-card h3 {
-    font-size: 1.2rem;
-  }
-
-  .blog-card p {
-    font-size: 0.8rem;
-  }
-
-  .blog-card a {
-    font-size: 0.8rem;
-    padding: 8px 12px;
-  }
-  .hero h1{
-    margin-left: 50px;
-  }
-  .cta-buttons .btn-primary {
-    margin-left: 190px;
-  }
-  .profile-page{
-    margin-left: 0px;
-    width: 45rem;
-  }
-  header nav ul{
-    margin-left: 0px;
-  }
-  .hover-effect{
-    width: 100px;
-    height: 100px;
-  }
-  .prep1 h1{
-    font-size: 31px;
-    margin-left: -14px;
-  }
-  .prep1 p{
-   margin-left: 0px;
-  }
-  .profile-image1{
-    width: 44rem;
-    margin-left: -170px;
-  }
-}
-
-/* Footer */
-footer {
-  background: #f7fafc;
-  color: #333;
-  padding: 10px 20px;
-  text-align: center;
-}
+/* FAQ Section */
 .faq {
   padding: 50px 20px;
 }
@@ -515,4 +424,114 @@ footer {
 
 .faq-item.active p {
   display: block; /* Show content when active */
+}
+
+/* Footer */
+footer {
+  background: #f7fafc;
+  color: #333;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+    margin-left: -40px;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: row;
+    gap: 10px;
+    margin-left:70px;
+  }
+
+  .profile-page,
+  .image-container,
+  .profile-image,
+  .profile-image1,
+  .image-container1 {
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+  }
+
+  .fav-sheets .icon,
+  .prep,
+  .prep1,
+  .prep2,
+  .features .feature-grid,
+  .blogs .blog-carousel,
+  .faq .faq-container {
+    flex-direction: column;
+    margin-left: 0px;
+    align-items: center;
+  }
+
+  .prep1 h1 {
+    font-size: 1.5rem;
+    margin-left: 0;
+  }
+
+  .prep2 h1 {
+    font-size: 1rem;
+  }
+
+  .prep2 h1 p {
+    font-size: 0.8rem;
+  }
+
+  .feature h3 {
+    font-size: 1.2rem;
+  }
+
+  .feature p {
+    font-size: 0.9rem;
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+  }
+
+  .blog-carousel {
+    gap: 15px;
+  }
+
+  .blog-card {
+    flex: 0 0 250px;
+    padding: 15px;
+  }
+
+  .blog-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .blog-card p {
+    font-size: 0.8rem;
+  }
+
+  .blog-card a {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
 }
