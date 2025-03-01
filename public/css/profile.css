@@ -4,6 +4,9 @@
     box-sizing: border-box;
     scrollbar-width: none;
   }
+  .profile-icon{
+    width: 40px; border-radius: 500px; margin-right: 50px; margin-left: -45px; margin-top: 6px;
+  }
 
 
   /* Body and Background */
@@ -291,6 +294,12 @@ background-color: #f0f0f0;
 }
 
 @media (max-width: 768px) {
+  .profile-menu{
+    margin-right: -170px;
+  }
+  .profile-icon{
+    margin-left: 0px;
+  }
   .sidebar {
     display: none;
     width: 100%;

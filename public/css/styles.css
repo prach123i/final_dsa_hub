@@ -41,13 +41,17 @@ body {
  */
 
 .container-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: green;
+    color: white;
+    text-align: center;
     width: 40%;
-    background-color: green;
     position: relative;
     z-index: 1;
-    color: white;
-    padding: 20px;
-    text-align: center;
     margin-left: 330px; /* Add spz-ace between the form and the right container */
     height: 100vh;
     overflow: hidden;
@@ -61,7 +65,7 @@ body {
 .feature {
     display: flex;
     align-items: center; /* Aligns icon and title in a row */
-    gap: 15px; /* Space between icon and text */
+    gap: 10px; /* Space between icon and text */
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow */
@@ -78,14 +82,17 @@ body {
 
 }
 .feature-icon {
-    font-size: 24px;
-    color: #007bff; /* Adjust color as needed */
+    font-size: 2rem;
+    color: green;
 }
 
 h1 {
     text-align: center;
     font-size: 1.5rem;
     color: #2c3e50;
+}
+h5{
+    margin-left: 90px;
 }
 
 h2 {
@@ -144,12 +151,19 @@ button:hover {
 }
 
 @media (max-width: 768px) {
+    body{
+        overflow-y: auto;
+    }
   .main {
     width: 90%;
     margin-left: 0;
   }
+  h5{
+    margin-left: 0px;
+  }
 
   .container-right {
+    display: none; /* Hide right part on small screens */
     width: 100%;
     margin-left: 0;
     height: auto;

@@ -16,6 +16,9 @@ body {
     min-height: 100vh;
     background: #f4f4f9;
 }
+.profile-icon{
+    width: 40px; border-radius: 500px; margin-right: 50px; margin-left: -45px; margin-top: 6px;
+}
 
 /* Main Container */
 .container2 {
@@ -190,12 +193,11 @@ input[type="checkbox"] {
 
 
 @media screen and (max-width: 768px) {
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: row;
+    .profile-menu{
+        margin-right: 85px;
+        margin-top: 120px;
     }
+    
     .sidebar {
         display: none;
         width: 100%;
@@ -207,7 +209,9 @@ input[type="checkbox"] {
         z-index: 999;
         background-color: black;
     }
-
+    .profile-icon{
+        margin-left: 0px;
+    }
     .sidebar-toggle {
         display: block;
     }
