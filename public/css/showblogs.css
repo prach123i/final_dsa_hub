@@ -186,8 +186,17 @@ nav ul {
   cursor: pointer;
   z-index: 1000;
 }
-
+.hidden-links{
+  display: none;
+}
 @media (max-width: 768px) {
+  .profile-menu{
+    margin-right: -165px;
+    margin-top: 0px;
+}
+  .hidden-links{
+    display: block;
+  }
   .profile-icon{
 margin-left: 0px;
   }

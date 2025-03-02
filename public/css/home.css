@@ -190,12 +190,17 @@ input[type="checkbox"] {
   cursor: pointer;
   z-index: 1000;
 }
-
+.hidden-links{
+    display: none;
+  }
 
 @media screen and (max-width: 768px) {
+    .hidden-links{
+        display: block;
+      }
     .profile-menu{
-        margin-right: 85px;
-        margin-top: 120px;
+        margin-right: 70px;
+        margin-top: 190px;
     }
     
     .sidebar {

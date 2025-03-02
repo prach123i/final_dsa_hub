@@ -202,8 +202,16 @@ transition: 0.2s;
 .profile-item:hover {
 background-color: #f0f0f0;
 }
-
+.hidden-links{
+  display: none;
+}
 @media (max-width: 768px) {
+  .profile-menu{
+    margin-right: -170px;
+}
+  .hidden-links{
+    display: block;
+  }
   body{
     overflow-y:auto;
   }

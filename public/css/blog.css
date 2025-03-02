@@ -192,15 +192,20 @@ input[type="file"] {
   color: #bdc3c7;
   font-style: italic;
 }
-
+.hidden-links{
+  display: none;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
+  .hidden-links{
+    display: block;
+  }
   body{
     overflow-y: auto;
   }
   .profile-menu{
-    margin-right: 85px;
-    margin-top: 120px;
+    margin-right: 70px;
+    margin-top: 170px;
 }
   
 .profile-icon{
