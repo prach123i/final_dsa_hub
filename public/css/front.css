@@ -19,13 +19,18 @@ a {
 .cta-buttons a {
   color: white;
 }
-.container {
+.containerfront {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap; /* Ensure wrapping on smaller screens */
 }
-
+.container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Ensure wrapping on smaller screens */
+}
 /* Header */
 header {
   background: black;
@@ -72,6 +77,35 @@ header nav ul li a:hover {
 
 .auth-buttons .btn:hover {
   transform: scale(1.1);
+}
+
+.hamburger {
+  font-size: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 1000;
+  color: white;
+  display: none;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
 }
 
 /* Hero Section */
@@ -446,10 +480,15 @@ footer {
     margin-right: -165px;
     margin-top: 0px;
 }
-  header .container {
+  header .containerfront {
     flex-direction: column;
     align-items: flex-start;
   }
+  header .container {
+    flex-direction: row;
+    align-items: center;
+  }
+
 
   header nav ul {
     flex-direction: column;
@@ -544,4 +583,33 @@ footer {
     font-size: 0.8rem;
     padding: 8px 12px;
   }
+}
+.hamburger{
+  display: none;
+}
+@media (max-width: 480px) {
+  .hamburger {
+    display: block;
+    margin-top: 9px;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+  }
+  .nav-links.show {
+    display: block;
+  }
+  .nav-links ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+  }
+  
 }

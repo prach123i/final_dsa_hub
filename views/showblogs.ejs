@@ -29,7 +29,9 @@
             <div class="logo">
                 <a href="/api/user/authfront"  rel="noopener noreferrer">DSA <span>Hub</span></a>
             </div>
-            <nav>
+            <!-- Hamburger Menu Button -->
+            <button id="menu-btn" class="hamburger">&#9776;</button>
+            <nav id="nav-menu" class="nav-links">
                 <ul>
                     <li><a href="/api/user/home">Solve Questions</a></li>
                     <li><a href="/blog/add-new">Post Blog</a></li>
@@ -50,7 +52,7 @@
                           display: none;
                           position: absolute;
                           top: 50px;
-                          right: 20px;
+                          right: 145px;
                           background: white;
                           border-radius: 10px;
                           box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
@@ -98,20 +100,36 @@
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function toggleProfileMenu() {
-    var menu = document.getElementById("profile-menu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
-
-  // Close menu when clicking outside
-  document.addEventListener("click", function(event) {
-    var profileContainer = document.querySelector(".profile-container");
-    var profileMenu = document.getElementById("profile-menu");
-
-    if (!profileContainer.contains(event.target)) {
-      profileMenu.style.display = "none";
-    }
-  });
+        // Toggle Hamburger Menu
+        document.getElementById("menu-btn").addEventListener("click", function() {
+            var menu = document.getElementById("nav-menu");
+            var button = document.getElementById("menu-btn");
+      
+            menu.classList.toggle("show");
+      
+            // Toggle between hamburger and close (✖) icon
+            if (menu.classList.contains("show")) {
+              button.innerHTML = "&#10006;"; // Cross icon (✖)
+              button.style.color = "#fff"; // Change color if needed
+            } else {
+              button.innerHTML = "&#9776;"; // Hamburger icon (☰)
+            }
+          });
+      
+          function toggleProfileMenu() {
+            var menu = document.getElementById("profile-menu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+          }
+      
+          // Close menu when clicking outside
+          document.addEventListener("click", function(event) {
+            var profileContainer = document.querySelector(".profile-container");
+            var profileMenu = document.getElementById("profile-menu");
+      
+            if (!profileContainer.contains(event.target)) {
+              profileMenu.style.display = "none";
+            }
+          });
     </script>
 </body>
 

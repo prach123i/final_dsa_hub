@@ -14,12 +14,48 @@ body {
   overflow: hidden;
 }
 
-.profile-icon{
-  width: 40px; border-radius: 500px; margin-right: 50px; margin-left: -45px; margin-top: 6px;
+.profile-icon {
+  width: 40px;
+  border-radius: 500px;
+  margin-right: 50px;
+  margin-left: -45px;
+  margin-top: 6px;
 }
 
 /* Header */
+.hamburger {
+  font-size: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 1000; /* Ensures it stays on top */
+  color: white;
+}
 
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+
+
+.nav-links ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+.hidden-links {
+  display: none;
+}
 /* Sidebar */
 .sidebar {
   width: 250px;
@@ -71,6 +107,7 @@ body {
 .sidebar .hover-accent:hover {
   background-color: #e74c3c;
 }
+
 .nav-item {
   display: flex;
   align-items: center;
@@ -80,6 +117,7 @@ body {
   border-radius: 10px;
   padding-left: 10px;
 }
+
 .nav-item:hover {
   background-color: gray;
 }
@@ -113,8 +151,7 @@ body {
 /* Form Container */
 .container3 {
   max-width: 800px;
-  margin: 200px;
-  margin-top: 100px;
+  margin: 50px auto;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 12px;
@@ -123,7 +160,6 @@ body {
   color: #333;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   flex-grow: 1;
-  margin-left: 20px;
 }
 
 .container3:hover {
@@ -132,6 +168,10 @@ body {
 }
 
 /* Form Elements */
+.form-group {
+  margin-bottom: 20px;
+}
+
 .form-control {
   background-color: transparent; /* Remove background */
   border: none; /* Remove border */
@@ -141,7 +181,6 @@ body {
   font-size: 18px; /* Increase font size */
   color: #333; /* Text color */
   width: 100%; /* Full width */
-  margin-bottom: 16px; /* Spacing below */
   transition: border-color 0.3s ease; /* Smooth transition for border */
 }
 
@@ -176,8 +215,6 @@ input[type="file"] {
 }
 
 .body-textarea {
-  /* border: 1px solid green; */
-  /* border-radius: 8px; */
   padding: 12px;
   font-size: 16px;
   color: #333;
@@ -192,29 +229,59 @@ input[type="file"] {
   color: #bdc3c7;
   font-style: italic;
 }
-.hidden-links{
+
+.hidden-links {
+  display: none;
+}
+.hamburger{
   display: none;
 }
 /* Responsive Design */
 @media (max-width: 768px) {
-  .hidden-links{
+  .nav-links ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+  }
+  .hamburger {
+    display: block; /* Show button on small screens */
+    margin-top: 9px;
+}
+
+.nav-links {
+    display: none; /* Hide the menu initially */
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.nav-links.show {
+    display: block; /* Show when hamburger is clicked */
+}
+  .show {
+    display: flex !important;
+  }
+  .hidden-links {
     display: block;
   }
-  body{
+  body {
     overflow-y: auto;
   }
-  .profile-menu{
+  .profile-menu {
     margin-right: 70px;
     margin-top: 170px;
-}
-  
-.profile-icon{
-  margin-left: 0px;
-}
+  }
+  .profile-icon {
+    margin-left: 0px;
+  }
   .btn-primary {
     width: 100%;
   }
-
   .sidebar {
     display: none;
     width: 100%;
@@ -226,18 +293,21 @@ input[type="file"] {
     background-color: black;
     padding: 10px;
   }
-
   .sidebar-toggle {
     display: block;
   }
-
   .container2 {
     flex-direction: column;
   }
-
   .container3 {
     margin: 15px;
     padding: 15px;
+  }
+}
+
+@media (min-width: 769px) {
+  .hidden-links {
+    display: none;
   }
 }
 
@@ -248,7 +318,6 @@ input[type="file"] {
     width: 100%;
     height: auto;
   }
-
   .sidebar {
     display: none;
     width: 100%;
@@ -260,22 +329,18 @@ input[type="file"] {
     z-index: 999;
     background-color: black;
   }
-
   .sidebar-toggle {
     display: block;
   }
-
   .sidebar img {
     width: 80px;
     height: 80px;
   }
-
   .nav-item {
     width: auto;
     display: inline-block;
     padding: 10px;
   }
-
   .container3 {
     width: 90%;
     margin: 30px auto;
@@ -286,16 +351,13 @@ input[type="file"] {
   .nav-item span {
     display: none; /* Hide text, only show icons */
   }
-  
   .sidebar {
     width: 60px;
     padding: 10px;
   }
-
   .sidebar:hover {
     width: 200px;
   }
-
   .sidebar img {
     width: 80px;
     height: 80px;
@@ -306,20 +368,16 @@ input[type="file"] {
   .sidebar {
     padding: 10px;
   }
-
   .sidebar img {
     width: 50px;
     height: 50px;
   }
-
   .nav-item {
     font-size: 12px;
   }
-
   .container3 {
     padding: 10px;
   }
-
   .btn-primary {
     padding: 8px;
     font-size: 14px;

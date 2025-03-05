@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Add new blog page</title>
+    <title>Add New Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/css/blog.css">
     <link rel="stylesheet" href="/css/nav.css">
@@ -17,7 +17,9 @@
             <div class="logo">
                 <a href="/api/user/authfront"  rel="noopener noreferrer">DSA <span>Hub</span></a>
             </div>
-            <nav>
+            <!-- Hamburger Menu Button -->
+            <button id="menu-btn" class="hamburger">&#9776;</button>
+            <nav id="nav-menu" class="nav-links">
                 <ul>
                     <li><a href="/api/user/home">Solve Questions</a></li>
                     <li><a href="/blog/add-new">Post Blog</a></li>
@@ -37,8 +39,8 @@
                         <div id="profile-menu" class="profile-menu" style="
                           display: none;
                           position: absolute;
-                          top: 65px;
-                          right: 33px;
+                          top: -105px;
+                          right: -70px;
                           background: white;
                           border-radius: 10px;
                           box-shadow: 0px 4px 6px #0000001a;
@@ -67,24 +69,45 @@
         <%- include('./partials/nav.ejs') %>
         <div class="container3 mt-3">
             <form action="/blog" method="POST" enctype="multipart/form-data">
-                <div class="mb-3">
+                <h2 style="text-align: center;">Create a New Blog</h2>
+                <div class="form-group">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" class="form-control" id="title" name="title" aria-describedby="title">
                 </div>
-                <div class="mb-3">
+                <div class="form-group">
                     <label for="coverImage" class="form-label">Cover Image</label>
                     <input type="file" class="form-control" id="coverImage" name="coverImage" aria-describedby="coverImage">
                 </div>
-                <div class="mb-3">
+                <div class="form-group">
+                    <label for="body" class="form-label">Content</label>
                     <textarea class="form-control body-textarea" id="body" name="body" placeholder="Write your blog content here..."></textarea>
                 </div>
-                <div class="mb-3">
+                <div class="form-group">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
     </div>
     <script>
+        // Toggle Hamburger Menu
+       // Toggle Hamburger Menu
+       document.getElementById("menu-btn").addEventListener("click", function() {
+    var menu = document.getElementById("nav-menu");
+    var button = document.getElementById("menu-btn");
+
+    menu.classList.toggle("show");
+
+    // Toggle between hamburger and close (✖) icon
+    if (menu.classList.contains("show")) {
+        button.innerHTML = "&#10006;"; // Cross icon (✖)
+        button.style.color = "#fff"; // Change color if needed
+    } else {
+        button.innerHTML = "&#9776;"; // Hamburger icon (☰)
+    }
+});
+
+
+
         function toggleProfileMenu() {
             var menu = document.getElementById("profile-menu");
             menu.style.display = menu.style.display === "block" ? "none" : "block";

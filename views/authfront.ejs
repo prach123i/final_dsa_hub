@@ -31,7 +31,9 @@
       <a href="/api/user/authfront"  rel="noopener noreferrer">
         <div class="logo">DSA <span>Hub</span></div>
       </a>
-      <nav>
+      <!-- Hamburger Menu Button -->
+      <button id="menu-btn" class="hamburger">&#9776;</button>
+      <nav id="nav-menu" class="nav-links">
         <ul>
           <li><a href="/api/user/home">Solve Questions</a></li>
           <li><a href="/blog/add-new">Post Blog</a></li>
@@ -46,7 +48,7 @@
 
           <div class="profile-container" style="position: relative;">
             <a href="javascript:void(0);" onclick="toggleProfileMenu()">
-              <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 40px; border-radius: 500px; margin-right: 35px; margin-top: 6px;"/>
+              <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 40px; border-radius: 500px; margin-right: 50px; margin-top: 6px;"/>
             </a>
           
             <!-- Profile Action List (Initially Hidden) -->
@@ -54,7 +56,7 @@
               display: none;
               position: absolute;
               top: 50px;
-              right: 0;
+              right: 150px;
               background: white;
               border-radius: 10px;
               box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
@@ -268,6 +270,22 @@ function toggleProfileMenu() {
 
     if (!profileContainer.contains(event.target)) {
       profileMenu.style.display = "none";
+    }
+  });
+
+  // Toggle Hamburger Menu
+  document.getElementById("menu-btn").addEventListener("click", function() {
+    var menu = document.getElementById("nav-menu");
+    var button = document.getElementById("menu-btn");
+
+    menu.classList.toggle("show");
+
+    // Toggle between hamburger and close (✖) icon
+    if (menu.classList.contains("show")) {
+      button.innerHTML = "&#10006;"; // Cross icon (✖)
+      button.style.color = "#fff"; // Change color if needed
+    } else {
+      button.innerHTML = "&#9776;"; // Hamburger icon (☰)
     }
   });
   </script>

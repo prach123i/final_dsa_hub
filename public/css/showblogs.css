@@ -28,6 +28,38 @@ body {
   width: 40px; border-radius: 500px; margin-right: 50px; margin-left: -45px; margin-top: 6px;
 }
 /* Header */
+.hamburger {
+  font-size: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 1000; /* Ensures it stays on top */
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+
+.hidden-links {
+  display: none;
+}
+
 /* Navigation styling */
 nav ul {
   list-style: none;
@@ -190,6 +222,11 @@ nav ul {
   display: none;
 }
 @media (max-width: 768px) {
+  .nav-links ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+  }
   .profile-menu{
     margin-right: -165px;
     margin-top: 0px;
@@ -199,6 +236,24 @@ nav ul {
   }
   .profile-icon{
 margin-left: 0px;
+  }
+  .hamburger {
+    display: block; /* Show button on small screens */
+    margin-top: 9px;
+  }
+  .nav-links {
+    display: none; /* Hide the menu initially */
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+  }
+  .nav-links.show {
+    display: block; /* Show when hamburger is clicked */
   }
   .sidebar {
     display: none;
