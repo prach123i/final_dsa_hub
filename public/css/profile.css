@@ -311,8 +311,36 @@ h2 {
 .hidden-links {
   display: none;
 }
-
+.hamburger{
+  display: none;
+}
+.profile-menu{
+  display: none;
+              position: absolute;
+              top: 50px;
+              right: 0px;
+              background: white;
+              border-radius: 10px;
+              box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+              width: 252px;
+              height: 330px;
+              padding: 30px;
+              z-index: 100;
+}
 @media (max-width: 768px) {
+  .profile-menu{
+    display: none;
+              position: absolute;
+              top: 50px;
+              right: 152px;
+              background: white;
+              border-radius: 10px;
+              box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+              width: 252px;
+              height: 330px;
+              padding: 30px;
+              z-index: 100;
+  }
   .hamburger {
     display: block; /* Show button on small screens */
     margin-top: 9px;
@@ -322,6 +350,9 @@ h2 {
   }
   .hidden-links {
     display: block;
+  }
+  .left-column a{
+    color: white;
   }
   .profile-menu {
     margin-right: -170px;
