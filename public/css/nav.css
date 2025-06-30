@@ -1,8 +1,9 @@
 header {
-    background: black;
-    color: #333;
+    background: #232a34;
+    color: #e0e6ed;
     position: sticky;
     top: 0;
+    height: 80px; /* Increased height for better visibility */
     z-index: 1000;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     padding: 15px 20px;
@@ -17,45 +18,48 @@ header .container {
 header .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: white;
+    color: #e0e6ed;
 }
 
 header .logo a {
     text-decoration: none;
-    color: white;
+    color: #e0e6ed;
 }
 
 header .logo span {
     color: #6fed6f;
 }
 
-header nav ul {
+.nav-links {
+    display: flex;
+}
+
+.nav-links ul {
     list-style: none;
     display: flex;
     gap: 15px;
-    margin-left: 885px;
+    margin: 0;
+    padding: 0;
 }
 
-header nav ul li a {
-    transition: color 0.3s;
-    font-weight: bold;
+.nav-links ul li a {
     text-decoration: none;
-    color: white;
-}
-
-header nav ul li a:hover {
-    color: #6fed6f;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
     font-weight: bold;
+    color: #e0e6ed;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    background: none;
 }
 
-nav ul li a:hover {
-    color: green; /* Accent hover color */
+.nav-links ul li a:hover,
+.nav-links ul li a.active {
+    background: linear-gradient(90deg, #6fed6f 0%, #3aeeff 100%);
+    color: #232526;
+}
+
+.hidden-links {
+    display: none;
 }
 
 .navbar {
@@ -66,28 +70,37 @@ nav ul li a:hover {
     display: block;
     padding: 8px 12px;
     text-decoration: none;
-    color: black;
+    color: #21d397;
     font-size: 14px;
-    transition: 0.2s;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
 }
 
 .profile-item:hover {
-    background-color: #f0f0f0;
+    background-color: #232a34;
+    color: #6fed6f;
 }
 
 @media screen and (max-width: 768px) {
-    
-  
     header .container {
         flex-direction: row;
         align-items: center;
-      }
-    
-      header nav ul {
+    }
+    .nav-links ul {
         flex-direction: column;
         gap: 10px;
         margin-left: 0px;
-      }
-     
-
+    }
+    .nav-links ul li a {
+        color: #232a34;
+        background: #7fffd4;
+    }
+    .nav-links ul li a:hover,
+    .nav-links ul li a.active {
+        background: linear-gradient(90deg, #6fed6f 0%, #3aeeff 100%);
+        color: #232526;
+    }
+    .hidden-links {
+        display: block;
+    }
 }

@@ -6,59 +6,148 @@
   
   body {
     font-family: "Roboto", sans-serif;
-    color: #333;
+    color: #e0e6ed;
     line-height: 1.6;
     min-height: 100vh;
-    background: #f4f4f9;
+    background: linear-gradient(120deg, #181c24 60%, #21d397 100%);
     scrollbar-width: none;
   }
 .container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(120deg, #232a34 80%, #0a8fdc 100%);
+    padding: 32px 28px;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(33, 211, 151, 0.12), 0 2px 8px rgba(10, 143, 220, 0.10);
     margin-top: 40px;
+    max-width: 800px;
+}
+h1 {
+  color: #21d397;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
 }
 .author-info {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    gap: 18px;
+    margin-bottom: 24px;
+    border-bottom: 1.5px solid #21d397;
+    padding-bottom: 14px;
 }
 .author-info img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
+    border: 3px solid #21d397;
+    background: #181c24;
+    box-shadow: 0 2px 12px rgba(33,211,151,0.10);
+}
+.author-info h2 {
+  color: #0a8fdc;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0;
 }
 .img-fluid {
-    border-radius: 8px;
-    max-height: 300px;
+    border-radius: 10px;
+    max-height: 320px;
     object-fit: cover;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 16px rgba(33,211,151,0.10);
 }
 p {
-    color: #555;
-    line-height: 1.6;
+    color: #b0bac9;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+.comment-section {
+  margin-top: 36px;
+  background: #232a34;
+  border-radius: 12px;
+  padding: 22px 18px;
+  box-shadow: 0 2px 8px rgba(33, 211, 151, 0.08);
+}
+.comment-section h3 {
+  color: #21d397;
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+}
+.comment {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #0a8fdc;
+    padding-bottom: 10px;
+    background: #1e222b;
+    border-radius: 8px;
+    padding: 10px 14px;
+    transition: background 0.2s;
+}
+.comment:hover {
+  background: #232a34;
+}
+.comment strong {
+  color: #21d397;
+  font-weight: 600;
+}
+.comment small {
+  color: #b0bac9;
+  margin-left: 8px;
+}
+.comment p {
+  margin: 6px 0 0 0;
+  color: #e0e6ed;
 }
 .comment-form {
     margin-top: 30px;
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 8px;
+    background: #181c24;
+    padding: 22px 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(33, 211, 151, 0.08);
 }
-.comment {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+.comment-form label {
+  color: #21d397;
+  font-weight: 500;
+}
+.comment-form textarea {
+  background: #232a34;
+  color: #e0e6ed;
+  border: 1.5px solid #21d397;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border 0.2s;
+}
+.comment-form textarea:focus {
+  border: 1.5px solid #0a8fdc;
+  outline: none;
+}
+.btn-primary {
+  background: linear-gradient(90deg, #21d397 0%, #0a8fdc 100%);
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 8px 18px;
+  transition: background 0.3s;
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg, #0a8fdc 0%, #21d397 100%);
+  color: #fff;
 }
 .btn-secondary {
-    background-color: #6c757d;
-    border: none;
+  background: #232a34;
+  border: 1.5px solid #21d397;
+  color: #21d397;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-weight: 500;
+  transition: background 0.3s, color 0.3s;
 }
 .btn-secondary:hover {
-    background-color: #5a6268;
+  background-color: #21d397;
+  color: #181c24;
 }
 
 .sidebar-toggle {
@@ -74,6 +163,12 @@ p {
   z-index: 1000;
 }
 
+@media (max-width: 900px) {
+  .container {
+    padding: 12px;
+    margin-top: 18px;
+  }
+}
 @media (max-width: 768px) {
   .sidebar {
     display: none;
@@ -92,12 +187,14 @@ p {
   }
 
   .container {
-    padding: 15px;
+    padding: 10px;
+    margin-top: 10px;
   }
 
   .author-info {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
   }
 
   .author-info img {
@@ -107,7 +204,7 @@ p {
 
 @media (max-width: 480px) {
   .container {
-    padding: 10px;
+    padding: 6px;
   }
 
   .author-info img {
@@ -116,7 +213,7 @@ p {
   }
 
   .img-fluid {
-    max-height: 200px;
+    max-height: 160px;
   }
 
   p {
@@ -124,7 +221,7 @@ p {
   }
 
   .comment-form {
-    padding: 15px;
+    padding: 10px;
   }
 
   .comment {

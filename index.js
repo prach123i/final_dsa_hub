@@ -41,9 +41,15 @@ function checkAuthentication(req, res, next) {
   if (req.session.user) {
     next();
   } else {
-    res.redirect('/front');
+    res.redirect('/api/user/authfront');
   }
 }
+
+// Set res.locals.user for all views (must be before routes)
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
 
 // Route Middleware
 app.use("/api/user", userRouter);
@@ -53,12 +59,9 @@ app.set("views", path.resolve("./views"));
 
 // Routes
 app.get("/", (req, res) => {
-  res.redirect("/front");
+  res.redirect("/api/user/authfront");
 });
 
-app.get("/front", (req, res) => {
-  res.render("front", { user: req.session.user });
-});
 
 app.get("/api/user/home", checkAuthentication, (req, res) => {
   res.render("home");
@@ -68,11 +71,6 @@ app.get("/api/user/home", checkAuthentication, (req, res) => {
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something went wrong. Please try again later.");
-});
-
-app.use((req, res, next) => {
-  res.locals.user = req.user || null;
-  next();
 });
 
 // Start the server

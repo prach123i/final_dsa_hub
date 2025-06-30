@@ -3,291 +3,1115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DSA Hub - Home</title>
-  <link rel="stylesheet" href="/css/front.css">
+  <title>DSA Hub - Your Ultimate DSA Practice Companion</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <style>
+    :root {
+      --primary: #6fed6f;
+      --accent: #6c63ff;
+      --navy: #181c2f;
+      --navy2: #232526;
+      --section-bg: rgba(35,37,38,0.98);
+      --text-main: #fff;
+      --text-subtle: #e0e6f0;
+      --card-bg: rgba(35,37,38,0.96);
+      --shadow: 0 8px 32px 0 #6fed6f22;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
+      background: linear-gradient(120deg, var(--navy) 0%, var(--navy2) 100%);
+      color: var(--text-main);
+      scroll-behavior: smooth;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 80% 10%, #6c63ff33 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, #6fed6f22 0%, transparent 70%);
+      opacity: 0.7;
+      animation: bgmove 12s linear infinite alternate;
+    }
+    @keyframes bgmove {
+      0% { background-position: 80% 10%, 20% 80%; }
+      100% { background-position: 70% 20%, 30% 70%; }
+    }
+    section {
+      max-width: 1100px;
+      margin: 0 auto 80px auto;
+      padding: 0 18px;
+      position: relative;
+      z-index: 2;
+    }
+    /* Hero Section */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 18px;
+      letter-spacing: -1px;
+      text-shadow: 0 2px 24px #6fed6f33;
+    }
+    .hero-tagline {
+      color: var(--text-subtle);
+      font-size: 1.3rem;
+      margin-bottom: 38px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .scroll-down-arrow {
+      margin-top: 40px;
+      font-size: 2.5rem;
+      color: var(--primary);
+      cursor: pointer;
+      animation: bounceArrow 1.6s infinite;
+      transition: color 0.2s;
+    }
+    .scroll-down-arrow:hover {
+      color: var(--accent);
+    }
+    @keyframes bounceArrow {
+      0%, 100% { transform: translateY(0);}
+      50% { transform: translateY(18px);}
+    }
+    /* Inline/Floating Menu Dots */
+    .floating-menu {
+      position: fixed;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .menu-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: #6fed6f55;
+      border: 2px solid var(--primary);
+      cursor: pointer;
+      transition: background 0.2s, border 0.2s, transform 0.2s;
+      opacity: 0.7;
+    }
+    .menu-dot.active, .menu-dot:hover {
+      background: var(--primary);
+      border: 2px solid #fff;
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    /* Why DSA Hub */
+    .why-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 60px;
+    }
+    .why-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 32px 24px;
+      min-width: 220px;
+      max-width: 320px;
+      flex: 1 1 220px;
+      text-align: center;
+      color: var(--text-main);
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .why-card i {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: block;
+    }
+    .why-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 32px #6fed6f44;
+    }
+    /* Features */
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      align-items: stretch;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 32px 24px;
+      min-width: 220px;
+      max-width: 320px;
+      flex: 1 1 220px;
+      text-align: center;
+      color: var(--text-main);
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card i {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: block;
+    }
+    .feature-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 32px #6fed6f44;
+    }
+    /* Live Stats */
+    .stats-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 32px 24px;
+      min-width: 180px;
+      text-align: center;
+      color: var(--primary);
+      font-size: 2.1rem;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .stat-label {
+      color: var(--text-subtle);
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-top: 8px;
+      letter-spacing: 0.5px;
+    }
+    /* Success Stories */
+    .testimonials-section {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      align-items: stretch;
+    }
+    .testimonial-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 28px 22px;
+      min-width: 220px;
+      max-width: 340px;
+      flex: 1 1 220px;
+      color: var(--text-main);
+      font-size: 1.05rem;
+      font-style: italic;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .testimonial-card:before {
+      content: "“";
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: absolute;
+      left: 18px; top: 10px;
+      opacity: 0.4;
+    }
+    .testimonial-author {
+      margin-top: 18px;
+      font-size: 1rem;
+      color: var(--primary);
+      font-weight: 600;
+      text-align: right;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 32px #6fed6f44;
+    }
+    /* Get Started CTA */
+    .get-started-section {
+      text-align: center;
+      margin-top: 60px;
+      margin-bottom: 60px;
+    }
+    .get-started-btn {
+      display: inline-block;
+      padding: 18px 48px;
+      border-radius: 12px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+      color: #232526;
+      box-shadow: 0 4px 24px #6fed6f33;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+      margin-top: 18px;
+      opacity: 0;
+      animation: fadeInCta 1.2s 0.2s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    .get-started-btn:hover {
+      background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+      color: #fff;
+      transform: scale(1.06) translateY(-2px);
+      box-shadow: 0 8px 32px #6fed6f44;
+    }
+    @keyframes fadeInCta {
+      to { opacity: 1; }
+    }
+    /* Motivational Quotes */
+    .quote-section {
+      text-align: center;
+      margin: 60px auto 40px auto;
+      color: var(--accent);
+      font-size: 1.2rem;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+    .quote-section.visible {
+      opacity: 1;
+    }
+    /* Floating Back to Top Button */
+    #back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 2000;
+      background: var(--primary);
+      color: #232526;
+      border: none;
+      border-radius: 50%;
+      width: 54px; height: 54px;
+      font-size: 2rem;
+      box-shadow: 0 4px 24px #6fed6f44;
+      cursor: pointer;
+      display: none;
+      align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    #back-to-top.show {
+      display: flex;
+      animation: fadeInCta 0.7s;
+    }
+    #back-to-top:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: scale(1.08) rotate(-8deg);
+    }
+    #auth-bar {
+    position: fixed;
+    top: 24px;
+    right: 32px;
+    z-index: 3001;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background-color: var(--card-bg);
+    min-width: 160px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    padding: 10px 0;
+    z-index: 3002;
+  }
+
+  .dropdown-content a {
+    color: var(--primary);
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+  }
+
+  .dropdown-content a:hover {
+    background-color: rgba(108,99,255,0.08);
+    color: var(--accent);
+    border-radius: 6px;
+  }
+
+  .dropdown:hover .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    display: block;
+  }
+
+  .profile-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px #6fed6f33;
+    cursor: pointer;
+    border: 2px solid var(--primary);
+    background: #232526;
+    transition: box-shadow 0.2s, border 0.2s;
+  }
+  .profile-icon:hover, .profile-icon:focus {
+    box-shadow: 0 4px 16px #6fed6f66;
+    border: 2px solid var(--accent);
+  }
+  .dropdown-content {
+    /* ...existing code... */
+    margin-top: 8px;
+    animation: fadeInProfile 0.18s;
+  }
+  @keyframes fadeInProfile {
+    from { opacity: 0; transform: translateY(-10px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+  /* Responsive */
+  @media (max-width: 900px) {
+    .why-section, .features-grid, .stats-section, .testimonials-section {
+      flex-direction: column;
+      gap: 18px;
+    }
+    .floating-menu { right: 10px; }
+  }
+    @media (max-width: 600px) {
+      .hero-title { font-size: 2rem; }
+      .get-started-btn { font-size: 1.1rem; padding: 14px 24px; }
+      #back-to-top { right: 12px; bottom: 12px; width: 40px; height: 40px; font-size: 1.2rem; }
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
 </head>
 <body>
-  <!-- Header -->
-   <style>
-    .profile-item {
-  display: block;
-  padding: 8px 12px;
-  text-decoration: none;
-  color: black;
-  font-size: 14px;
-  transition: 0.2s;
-}
-
-.profile-item:hover {
-  background-color: #f0f0f0;
-}
-
-   </style>
-
-  <header>
-    <div class="container">
-      <a href="/api/user/authfront"  rel="noopener noreferrer">
-        <div class="logo">DSA <span>Hub</span></div>
-      </a>
-      <!-- Hamburger Menu Button -->
-      <button id="menu-btn" class="hamburger">&#9776;</button>
-      <nav id="nav-menu" class="nav-links">
-        <ul>
-          <li><a href="/api/user/home">Solve Questions</a></li>
-          <li><a href="/blog/add-new">Post Blog</a></li>
-          <li class="hidden-links"><a href="/api/user/sheets">Explore Sheets</a></li>
-          <li class="hidden-links"><a href="/blog/show-blogs">See All Blogs</a></li>
-        </ul>
-      </nav>
-
-      <div class="auth-buttons" id="auth-container">
-        <% if (user) { %>
-          <!-- User is logged in -->
-
-          <div class="profile-container" style="position: relative;">
-            <a href="javascript:void(0);" onclick="toggleProfileMenu()">
-              <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 40px; border-radius: 500px; margin-right: 50px; margin-top: 6px;"/>
-            </a>
-          
-            <!-- Profile Action List (Initially Hidden) -->
-            <div id="profile-menu" class="profile-menu" style="
-              display: none;
-              position: absolute;
-              top: 50px;
-              right: 150px;
-              background: white;
-              border-radius: 10px;
-              box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-              width: 200px;
-              height: 270px;
-              padding: 30px;
-              z-index: 100;">
-              <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 100px; border-radius: 500px; margin-left: 45px; margin-top: 6px;"/>
-              <div style="color: black; font-weight: bold; text-align: center;"><%= user.username %></div>
-              <div style="color: black; font-size: 10px; text-align: center;"><%= user.email %></div>
-              <div class="divider" style=" border-bottom: 1px solid black; margin: 8px 0;"></div> 
-              <a href="/api/user/profile" class="profile-item">View Profile</a>
-              <a href="/api/user/profile-edit" class="profile-item">Edit Profile</a>
-              <a href="/api/user/logout" class="profile-item">Logout</a>
-            </div>
-          </div>
-          
-        <% } else { %>
-          <!-- User is not logged in -->
-          <a href="/api/user/signin" class="btn login-btn">Login</a>
-          <a href="/api/user/signup" class="btn signup-btn">Signup</a>
-        <% } %>
+  <!-- Profile/Login Button (top-right) -->
+<div id="auth-bar" style="position: fixed; top: 24px; right: 32px; z-index: 3001; display: flex; align-items: center; justify-content: flex-end;">
+  <% if (user) { %>
+    <div class="dropdown" style="height:48px;">
+      <img src="<%= user.avatar && user.avatar.trim() !== '' ? user.avatar : ('https://ui-avatars.com/api/?name=' + encodeURIComponent(user.username || 'U')) %>" alt="Profile" class="profile-icon" style="width: 48px; height: 48px; border-radius: 50%; box-shadow: 0 2px 8px #6fed6f33; cursor: pointer;" />
+      <div class="dropdown-content" style="display: none; position: absolute; top: 120%; right: 0; background-color: white; min-width: 160px; box-shadow: 0 2px 12px rgba(0,0,0,0.15); border-radius: 10px; padding: 10px 0; z-index: 3002;">
+        <a href="/api/user/profile">View Profile</a>
+        <a href="/api/user/profile-edit">Edit Profile</a>
+        <a href="/api/user/logout" style="color:#ff4d4f;">Logout</a>
       </div>
     </div>
-  </header>
-    
+  <% } else { %>
+    <a href="/api/user/signin" class="get-started-btn" style="padding:10px 24px;font-size:1rem;">Login</a>
+  <% } %>
+</div>
 
+  <!-- Floating Menu Dots -->
+  <div class="floating-menu" id="floating-menu">
+    <div class="menu-dot" data-target="hero"></div>
+    <div class="menu-dot" data-target="why"></div>
+    <div class="menu-dot" data-target="features"></div>
+    <div class="menu-dot" data-target="stats"></div>
+    <div class="menu-dot" data-target="testimonials"></div>
+    <div class="menu-dot" data-target="getstarted"></div>
+  </div>
+  <!-- Back to Top Button -->
+  <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-
-      <h1>Unleash Your <span>DSA</span> Potential</h1>
-      <p>Join our vibrant community of learners to master Data Structures, Algorithms, and System Design. Enhance your problem-solving skills with hands-on practice, expert guidance, and collaborative learning.</p>
-      <div class="cta-buttons">
-        <a href="/api/user/home" class="btn-primary">Start Solving</a>
-        <a href="/blog/add-new" class="btn-secondary">Write a Blog</a>
+  <section class="hero-section" id="hero" data-aos="fade-up">
+    <div>
+      <% if (user) { %>
+        <h1 class="hero-title">Welcome, <%= user.username %>!</h1>
+        <div class="hero-tagline">Track. Solve. Improve.</div>
+        <div>
+          <i class="fas fa-chevron-down scroll-down-arrow" onclick="scrollToSection('why')" title="Scroll Down"></i>
+        </div>
+        <div id="auth-actions" style="margin-top:32px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;">
+          <a href="/home" class="get-started-btn" style="margin:0;">Home</a>
+          <a href="/blogs" class="get-started-btn" style="margin:0;">Blogs</a>
+          <a href="/sheets" class="get-started-btn" style="margin:0;">Sheets</a>
+          <a href="/profile" class="get-started-btn" style="margin:0;">Profile</a>
+        </div>
+      <% } else { %>
+        <h1 class="hero-title">Your Ultimate DSA Practice Companion</h1>
+        <div class="hero-tagline">Track. Solve. Improve.</div>
+        <div>
+          <i class="fas fa-chevron-down scroll-down-arrow" onclick="scrollToSection('why')" title="Scroll Down"></i>
+        </div>
+        <div id="auth-actions" style="margin-top:32px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;">
+          <a href="/login" class="get-started-btn" style="margin:0;">Login</a>
+          <a href="/api/user/signup" class="get-started-btn" style="margin:0;">Sign Up</a>
+        </div>
+      <% } %>
+    </div>
+  </section>
+  <!-- Why DSA Hub -->
+  <section id="why" data-aos="fade-up">
+    <h2 style="text-align:center;color:var(--primary);font-size:2rem;font-weight:700;margin-bottom:32px;">Why DSA Hub?</h2>
+    <div class="why-section">
+      <div class="why-card" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-bolt"></i>Fast, distraction-free practice</div>
+      <div class="why-card" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-chart-line"></i>Track your progress visually</div>
+      <div class="why-card" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-users"></i>Active, supportive community</div>
+      <div class="why-card" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-award"></i>Earn badges & climb leaderboards</div>
+    </div>
+  </section>
+  <!-- Features -->
+  <section id="features" data-aos="fade-up">
+    <h2 style="text-align:center;color:var(--primary);font-size:2rem;font-weight:700;margin-bottom:32px;">Features</h2>
+    <div class="features-grid" style="flex-wrap: wrap; gap: 32px; justify-content: center; align-items: stretch;">
+      <a href="/api/user/home" class="feature-card-link" style="text-decoration: none; color: inherit;">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-calendar-day"></i>
+          <div>Home</div>
+        </div>
+      </a>
+      <a href="/blog/add-new" class="feature-card-link" style="text-decoration: none; color: inherit;">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-blog"></i>
+          <div>Blogs</div>
+        </div>
+      </a>
+      <a href="/api/user/sheets" class="feature-card-link" style="text-decoration: none; color: inherit;">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-table"></i>
+          <div>Sheets</div>
+        </div>
+      </a>
+    </div>
+  </section>
+  <!-- Blogs Section (fix alignment and spacing) -->
+  <section id="blogs" data-aos="fade-up">
+    <h2 style="text-align:center;color:var(--primary);font-size:2rem;font-weight:700;margin-bottom:32px;">Trending Blogs</h2>
+    <div class="features-grid" style="flex-wrap: wrap; gap: 32px; justify-content: center; align-items: stretch;">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        <h3 style="color:var(--accent);margin-bottom:10px;">Understanding Greedy Algorithms</h3>
+        <a href="https://medium.com/@niraj.patil20/greedy-algorithm-47e9209a027b#:~:text=A%20greedy%20algorithm%2C%20as%20the,to%20a%20globally%2Doptimal%20solution." class="get-started-btn" style="font-size:1rem;padding:10px 24px;margin-top:10px;">Read More</a>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+        <h3 style="color:var(--accent);margin-bottom:10px;">Dynamic Programming Made Simple</h3>
+        <a href="https://leetcode.com/discuss/study-guide/458695/Dynamic-Programming-Patterns" class="get-started-btn" style="font-size:1rem;padding:10px 24px;margin-top:10px;">Read More</a>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+        <h3 style="color:var(--accent);margin-bottom:10px;">System Design course</h3>
+        <a href="https://designcrunch.io/" class="get-started-btn" style="font-size:1rem;padding:10px 24px;margin-top:10px;">Read More</a>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+        <h3 style="color:var(--accent);margin-bottom:10px;">System Design NewsLetter</h3>
+        <div style="color:var(--primary);font-size:0.95rem;">by Alex Xu</div>
+        <a href="https://blog.bytebytego.com/" class="get-started-btn" style="font-size:1rem;padding:10px 24px;margin-top:10px;">Read More</a>
       </div>
     </div>
   </section>
-
-  <!-- <img src="/images/helloji.gif" alt="Background GIF" class="background-gif"/> -->
-
-  <section class="profile-page">
-    <div class="image-container">
-      <img src="/images/profile1.png" alt="Profile Picture" class="profile-image"/>
+  <!-- Live Stats -->
+  <section id="stats" data-aos="fade-up">
+    <h2 style="text-align:center;color:var(--primary);font-size:2rem;font-weight:700;margin-bottom:32px;">Live Stats</h2>
+    <div class="stats-section">
+      <div class="stat-card"><span class="stat-number" data-count="20">0</span><div class="stat-label">Users</div></div>
+      <div class="stat-card"><span class="stat-number" data-count="35">0</span><div class="stat-label">Problems Solved</div></div>
+      <div class="stat-card"><span class="stat-number" data-count="0">0</span><div class="stat-label">Contributors</div></div>
+      <div class="stat-card"><span class="stat-number" data-count="6">0</span><div class="stat-label">Sheets</div></div>
+    </div>
+  </section>
+  <!-- Motivational Quote -->
+  <div class="quote-section" id="quote-section"></div>
+  <!-- Success Stories -->
+  <!-- <section id="testimonials" data-aos="fade-up">
+    <h2 style="text-align:center;color:var(--primary);font-size:2rem;font-weight:700;margin-bottom:32px;">Success Stories</h2>
+    <div class="testimonials-section">
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+        DSA Hub made my prep so much more organized. The progress tracker kept me motivated every day!
+        <div class="testimonial-author">— Priya S., Placed at Amazon</div>
+      </div>
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+        The daily questions and topic sheets helped me crack my interviews. Highly recommended!
+        <div class="testimonial-author">— Rahul K., Placed at Microsoft</div>
+      </div>
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+        I loved the community and leaderboard. Competing with friends made DSA fun!
+        <div class="testimonial-author">— Sneha T., Placed at Google</div>
+      </div>
+    </div>
+  </section> -->
+  <!-- Get Started CTA -->
+  <section id="getstarted" data-aos="fade-up">
+    <div class="get-started-section">
+      <h2 style="color:var(--primary);font-size:2rem;font-weight:700;margin-bottom:18px;">Ready to Level Up?</h2>
+      <% if (user) { %>
+        <button class="get-started-btn" onclick="window.location.href='/api/user/home'">Begin Your DSA Journey</button>
+      <% } else { %>
+        <button class="get-started-btn" onclick="window.location.href='/api/user/signup'">Begin Your DSA Journey</button>
+      <% } %>
     </div>
   </section>
 
-  <section class="fav-sheets">
-    <h1 style="color: green; font-size: 55px; text-align: center; margin-top: 90px;">Favorite <span></span>Sheets</h1>
-    <div class="icon">
-      <img class="hover-effect" style="width: 134px; height: 155px; margin-left: 35px" src="/images/75.png"/>
-      <img class="hover-effect" style="width: 134px; height: 155px; margin-left: 35px" src="/images/code.png"/>
-      <img class="hover-effect" style="width: 134px; height: 155px; margin-left: 35px" src="/images/top.png"/>
-      <h3 class="hover-effect" style="width: 134px; height: 155px; font-family: cursive; color:#d31c90; text-align: center; top: 35px; font-size: 25px;" >Striver's SDE Sheet</h3>
-      <img class="hover-effect" style="width: 134px; height: 155px; margin-left: 35px" src="/images/dynamic.png"/>
-    </div>    
-  </section>
   
-
-  <section class="prep">
-    <div class="prep1">
-    <h1>Simplyfy your prep</h1>
-    <p style="color: black; margin-left: 6px;">Stay ahead of the game! Organize your questions and notes in one place for effortless review and stress-free revisions.</p>
-    <h5 style="color: green;margin-left: 6px;
-    font-size: 20px;"><a href="/api/user/home">Solve Questions</a></h5>
-   </div>
-
-   <div class="prep2">
-    <h1 style="display: flex; justify-content: center; flex-direction: column;" >
-        <i style="display: inline-block; width: 50px; height: 50px; font-size: 30px; text-align: center; line-height: 50px; margin-left: 35px;" class="fas fa-brain"></i>
-     <p>Logic Building</p>
-     <p>Enhance your problem-solving skills with logic-based challenges.</p>
-    </h1>
-    <h1 style="display: flex; justify-content: center; flex-direction: column;" >
-        <i style="display: inline-block; width: 50px; height: 50px; font-size: 30px; text-align: center; line-height: 50px; margin-left: 35px;" class="fas fa-chart-line"></i>
-        <p>Sheet Tracker</p>
-     <p>Keep track of your progress and achieve your goals efficiently.</p>
-    </h1>
-    <h1 style="display: flex; justify-content: center; flex-direction: column;" >
-        <i style="display: inline-block; width: 50px; height: 50px; font-size: 30px; text-align: center; line-height: 50px; margin-left: 35px;" class="fas fa-edit"></i>
-        <p> Blog your ideas</p>
-     <p>Share your thoughts and inspire others with your ideas.</p>
-    </h1>
-  </div>
-  </section>
-  <div class="image-container1">
-    <img src="/images/que.png" alt="Profile Picture" class="profile-image1"/>
-  </div>
-
-  <!-- Features Section -->
-
-  <section class="features">
-    <h2><span style="color: black;">Explore</span> <span>DSA Hub</span></h2>
-    <p class="section-description" style="color: black;">Your one-stop platform for mastering DSA through interactive questions and insightful blogs.</p>
-    <div class="feature-grid">
-      <div class="feature">
-        <i class="fas fa-tasks feature-icon"></i>
-        <h3>Curated DSA Problems</h3>
-        <p>Access questions tailored for beginners to advanced coders, categorized by difficulty and topic.</p>
+   <section class="how-it-works reveal" style="max-width:900px;margin:60px auto 30px auto;z-index:1;position:relative;">
+    <h2 class="animated-heading" style="text-align:center;font-size:2.2rem;margin-bottom:30px;">
+      How <span style="color:var(--primary);">DSA Hub</span> Works
+    </h2>
+    <div class="steps" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px;">
+      <div class="step-card">
+        <div class="step-icon"><i class="fas fa-user-plus"></i></div>
+        <h3>1. Sign Up</h3>
+        <p>Create your free account to get started.</p>
       </div>
-      <div class="feature">
-        <i class="fas fa-edit feature-icon"></i>
-        <h3>Blog Your Journey</h3>
-        <p>Share experiences, tips, and insights with others to create a collaborative learning environment.</p>
+      <div class="step-card">
+        <div class="step-icon"><i class="fas fa-book-open"></i></div>
+        <h3>2. Learn & Practice</h3>
+        <p>Explore tutorials, solve curated DSA questions, and read blogs.</p>
       </div>
-      <div class="feature">
-        <i class="fas fa-medal feature-icon"></i>
-        <h3>Earn Achievements</h3>
-        <p>Track progress and earn badges as you complete challenges and contribute blogs.</p>
+      <div class="step-card">
+        <div class="step-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>3. Track Progress</h3>
+        <p>Monitor your learning journey and earn badges.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon"><i class="fas fa-users"></i></div>
+        <h3>4. Join Community</h3>
+        <p>Share, discuss, and grow with fellow learners.</p>
       </div>
     </div>
   </section>
-
-  <!-- Interactive Blogs Section -->
-  <section class="blogs">
-    <h2 style="text-align: center;">
-        What’s <span style="color:green;">Trending?</span>
-      </h2>
-          <p class="section-description" style="color: black; text-align: center;">Discover top blogs and trending DSA solutions from our community.</p>
-    <div class="blog-carousel">
-      <div class="blog-card">
-        <h3>Understanding Greedy Algorithms</h3>
-        <a href="https://medium.com/@niraj.patil20/greedy-algorithm-47e9209a027b#:~:text=A%20greedy%20algorithm%2C%20as%20the,to%20a%20globally%2Doptimal%20solution." class="btn-secondary">Read More</a>
-      </div>
-      <div class="blog-card">
-        <h3>Dynamic Programming Made Simple</h3>
-        <a href="https://leetcode.com/discuss/study-guide/458695/Dynamic-Programming-Patterns" class="btn-secondary">Read More</a>
-      </div>
-      <div class="blog-card">
-        <h3>System Design course</h3>
-        <a href="https://designcrunch.io/" class="btn-secondary">Read More</a>
-      </div>
-      <div class="blog-card">
-        <h3>System Design NewsLetter</h3>
-        <p>by Alex Xu</p>
-        <a href="https://blog.bytebytego.com/" class="btn-secondary">Read More</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="faq">
-    <h2 style="text-align: center ; color: green; font-size: 50px;">Frequently Asked Questions</h2>
-    <div class="faq-container">
-      <div class="faq-item">
-        <h3>What is DSA Hub?</h3>
-        <p>DSA Hub is a platform designed to help learners improve their Data Structures and Algorithms (DSA) skills through curated problems, interactive blogs, and collaborative learning.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Is DSA Hub free to use?</h3>
-        <p>Yes, DSA Hub is completely free for all users. You can access questions, read blogs, and track your progress without any cost.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can I contribute to the platform?</h3>
-        <p>Absolutely! You can contribute by writing blogs, sharing your solutions, or providing feedback to improve the platform.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How do I get started?</h3>
-        <p>Simply sign up for an account and explore the platform. You can start solving questions, tracking your progress, or writing blogs right away!</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 DSA Hub. All rights reserved. </p>
-    <p>Created by Prachi Sharma.</p>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/prachish6/"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://github.com/prach123i"><i class="fab fa-github"></i></a>
+ <footer style="position:relative;left:50%;bottom:0px;transform:translateX(-50%);background:rgba(35,37,38,0.98);border-radius:16px;box-shadow:0 2px 18px #23252655;padding:18px 36px;z-index:3000;min-width:260px;max-width:90vw;text-align:center;">
+    <p style="margin:0 0 4px 0;">&copy; 2025 DSA Hub. All rights reserved.</p>
+    <p style="margin:0 0 8px 0;">Created by Prachi Sharma.</p>
+    <div class="social-links" style="margin-top:4px;">
+      <a href="https://www.linkedin.com/in/prachish6/" style="color:var(--accent);margin:0 8px;font-size:1.3rem;"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/prach123i" style="color:var(--accent);margin:0 8px;font-size:1.3rem;"><i class="fab fa-github"></i></a>
     </div>
   </footer>
+ 
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    // JavaScript to toggle FAQ visibility
-    const faqItems = document.querySelectorAll('.faq-item h3');
-    
-    faqItems.forEach(item => {
+    // Smooth scroll for menu dots
+    document.querySelectorAll('.menu-dot').forEach(dot => {
+      dot.addEventListener('click', function() {
+        const target = document.getElementById(this.dataset.target);
+        if (target) target.scrollIntoView({behavior: 'smooth'});
+      });
+    });
+    // Highlight menu dot on scroll
+    const sections = ['hero','why','features','stats','testimonials','getstarted'];
+    window.addEventListener('scroll', function() {
+      let scrollPos = window.scrollY + window.innerHeight/2;
+      let active = 0;
+      sections.forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop < scrollPos) active = i;
+      });
+      document.querySelectorAll('.menu-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === active);
+      });
+      // Show/hide back to top
+      document.getElementById('back-to-top').classList.toggle('show', window.scrollY > 200);
+    });
+    // Scroll down arrow
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({behavior: 'smooth'});
+    }
+    // Back to top
+    document.getElementById('back-to-top').onclick = () => window.scrollTo({top:0,behavior:'smooth'});
+    // Animated counters for stats
+    function animateCounters() {
+      document.querySelectorAll('.stat-number').forEach(el => {
+        const target = +el.dataset.count;
+        let count = 0;
+        const step = Math.max(1, Math.floor(target/80));
+        function update() {
+          count += step;
+          if (count > target) count = target;
+          el.textContent = count.toLocaleString();
+          if (count < target) requestAnimationFrame(update);
+        }
+        update();
+      });
+    }
+    // Motivational quotes
+    const quotes = [
+      "“Consistency is the key to mastering DSA.”",
+      "“Every solved problem is a step closer to your dream job.”",
+      "“Don't practice until you get it right. Practice until you can't get it wrong.”",
+      "“The best way to learn DSA is to solve, fail, and solve again.”"
+    ];
+    function showQuoteOnScroll() {
+      const quoteSection = document.getElementById('quote-section');
+      if (!quoteSection) return;
+      const trigger = document.getElementById('stats');
+      if (window.scrollY + window.innerHeight > trigger.offsetTop + 80) {
+        if (!quoteSection.classList.contains('visible')) {
+          quoteSection.textContent = quotes[Math.floor(Math.random()*quotes.length)];
+          quoteSection.classList.add('visible');
+        }
+      }
+    }
+    window.addEventListener('scroll', showQuoteOnScroll);
+    // AOS init
+    AOS.init({
+      duration: 900,
+      once: true,
+      easing: 'cubic-bezier(.4,0,.2,1)'
+    });
+    // Animate counters when stats section is visible
+    let statsAnimated = false;
+    window.addEventListener('scroll', function() {
+      const stats = document.getElementById('stats');
+      if (!statsAnimated && stats && window.scrollY + window.innerHeight > stats.offsetTop + 60) {
+        animateCounters();
+        statsAnimated = true;
+      }
+    });
+    // Animate counters if already in view on load
+    window.addEventListener('DOMContentLoaded', function() {
+      if (window.scrollY + window.innerHeight > document.getElementById('stats').offsetTop + 60) {
+        animateCounters();
+        statsAnimated = true;
+      }
+    });
+
+    // --- Profile Button Logic for Auth Page ---
+    function getUser() {
+      try {
+        return JSON.parse(localStorage.getItem('dsa_user'));
+      } catch { return null; }
+    }
+    function clearUser() {
+      localStorage.removeItem('dsa_user');
+    }
+    function renderAuthBar() {
+      const user = getUser();
+      const bar = document.getElementById('auth-bar');
+      if (!bar) return;
+      if (user) {
+        bar.innerHTML = `
+          <div style="display:flex;align-items:center;gap:12px;">
+            <button id="profile-btn" style="background:none;border:none;cursor:pointer;">
+              <img src="${user.avatar || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.username || 'U')}" alt="Profile" style="width:40px;height:40px;border-radius:50%;box-shadow:0 2px 8px #6fed6f33;">
+            </button>
+            <div id="profile-dropdown" style="display:none;position:absolute;top:54px;right:0;background:var(--section-bg);color:var(--text-main);border-radius:12px;box-shadow:0 4px 24px #23252655;padding:18px 0;min-width:180px;z-index:3002;">
+              <div style="padding:8px 24px;font-weight:600;">${user.username || 'User'}</div>
+              <hr style="border:0;border-top:1px solid #333;margin:8px 0;">
+              <a href="#" id="show-profile-info" style="display:block;padding:8px 24px;color:var(--primary);text-decoration:none;">Show Profile</a>
+              <a href="/settings" style="display:block;padding:8px 24px;color:var(--text-main);text-decoration:none;">Settings</a>
+              <a href="#" id="logout-btn" style="display:block;padding:8px 24px;color:#ff4d4f;text-decoration:none;">Logout</a>
+            </div>
+          </div>
+        `;
+        // Dropdown logic
+        const btn = document.getElementById('profile-btn');
+        const dropdown = document.getElementById('profile-dropdown');
+        btn.onclick = function(e) {
+          e.stopPropagation();
+          dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        };
+        document.addEventListener('click', function() {
+          dropdown.style.display = 'none';
+        });
+        document.getElementById('logout-btn').onclick = function(e) {
+          e.preventDefault();
+          clearUser();
+          window.location.href = '/';
+        };
+        // Show profile info
+        document.getElementById('show-profile-info').onclick = function(e) {
+          e.preventDefault();
+          showProfileSection();
+          dropdown.style.display = 'none';
+        };
+      } else {
+        bar.innerHTML = '';
+      }
+    }
+
+    // Show profile info in the main section
+    function showProfileSection() {
+      const user = getUser();
+      if (!user) return;
+      document.getElementById('profile-section').style.display = 'block';
+      document.getElementById('profile-avatar').src = user.avatar || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.name || 'U');
+      document.getElementById('profile-name').textContent = user.username || 'User';
+      document.getElementById('profile-email').textContent = user.email || '';
+    }
+    // Hide profile section on logout
+    document.addEventListener('DOMContentLoaded', function() {
+      renderAuthBar();
+      renderAuthActions();
+      const logoutMain = document.getElementById('logout-btn-main');
+      if (logoutMain) {
+        logoutMain.onclick = function(e) {
+          e.preventDefault();
+          clearUser();
+          window.location.href = '/';
+        };
+      }
+    });
+
+    // Add quick access buttons for authorized users
+    function renderAuthActions() {
+      const user = getUser();
+      const actions = document.getElementById('auth-actions');
+      if (!actions) return;
+      if (user) {
+        actions.innerHTML = `
+          <a href="/home" class="get-started-btn" style="margin:0;">Solve Questions</a>
+          <a href="/blogs" class="get-started-btn" style="margin:0;">Blog Page</a>
+        `;
+      } else {
+        actions.innerHTML = '';
+      }
+    }
+
+    // Show/hide login button and profile/auth actions based on authentication
+    function updateAuthUI() {
+      const user = getUser();
+      const actions = document.getElementById('auth-actions');
+      const loginBtnContainer = document.getElementById('login-btn-container');
+      if (user) {
+        if (actions) {
+          actions.innerHTML = `
+            <a href="/home" class="get-started-btn" style="margin:0;">Home</a>
+            <a href="/blogs" class="get-started-btn" style="margin:0;">Blogs</a>
+            <a href="/sheets" class="get-started-btn" style="margin:0;">Sheets</a>
+            <a href="#" id="profile-btn-main" class="get-started-btn" style="margin:0;">Profile</a>
+          `;
+        }
+        if (loginBtnContainer) loginBtnContainer.style.display = "none";
+      } else {
+        if (actions) actions.innerHTML = "";
+        if (loginBtnContainer) loginBtnContainer.style.display = "flex";
+      }
+    }
+
+    // Route protection for internal pages
+    function protectRoutes() {
+      const user = getUser();
+      const protectedPaths = ['/home', '/blogs', '/sheets', '/profile', '/settings'];
+      const path = window.location.pathname;
+      if (protectedPaths.some(p => path === p)) {
+        if (!user) {
+          window.location.href = '/login';
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderAuthBar();
+      updateAuthUI();
+      showProfileSection();
+      protectRoutes();
+      // Login button logic
+      const loginBtn = document.getElementById('login-btn');
+      if (loginBtn) {
+        loginBtn.onclick = function() {
+          window.location.href = '/login';
+        };
+      }
+      // Profile button logic (shows profile section)
+      document.body.addEventListener('click', function(e) {
+        if (e.target && e.target.id === 'profile-btn-main') {
+          e.preventDefault();
+          showProfileSection();
+        }
+      });
+      const logoutMain = document.getElementById('logout-btn-main');
+      if (logoutMain) {
+        logoutMain.onclick = function(e) {
+          e.preventDefault();
+          clearUser();
+          window.location.href = '/';
+        };
+      }
+    });
+
+    // Typewriter effect for hero section
+    const typewriterTexts = [
+      "Unleash Your <span>DSA</span> Potential",
+      "Master <span>Algorithms</span> & <span>Data Structures</span>",
+      "Collaborate. Solve. <span>Grow</span>."
+    ];
+    let twIndex = 0, charIndex = 0, isDeleting = false;
+    const twElem = document.getElementById('typewriter');
+    function typeWriter() {
+      if (!twElem) return;
+      let current = typewriterTexts[twIndex];
+      let displayed = current.substring(0, charIndex);
+      twElem.innerHTML = displayed + '<span style="border-right:2px solid #6fed6f"></span>';
+      if (!isDeleting && charIndex < current.length) {
+        charIndex++;
+        setTimeout(typeWriter, 60);
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeWriter, 30);
+      } else {
+        if (!isDeleting) {
+          isDeleting = true;
+          setTimeout(typeWriter, 1200);
+        } else {
+          isDeleting = false;
+          twIndex = (twIndex + 1) % typewriterTexts.length;
+          setTimeout(typeWriter, 400);
+        }
+      }
+    }
+    typeWriter();
+
+    // FAQ animation
+    document.querySelectorAll('.faq-item h3').forEach(item => {
       item.addEventListener('click', () => {
         const parent = item.parentElement;
         parent.classList.toggle('active');
+        // Hide all other answers
+        document.querySelectorAll('.faq-item').forEach(faq => {
+          if (faq !== parent) faq.classList.remove('active');
+        });
       });
+    });
 
-      document.querySelectorAll('.hover-effect').forEach(img => {
-    img.addEventListener('mousemove', e => {
+    // Interactive hover for favorite sheets (parallax)
+    document.querySelectorAll('.hover-effect').forEach(img => {
+      img.addEventListener('mousemove', e => {
         const rect = img.getBoundingClientRect();
-        const x = e.clientX - rect.left; // Get the horizontal coordinate
-        const y = e.clientY - rect.top; // Get the vertical coordinate
-
-        // Move the image slightly based on cursor position
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
         img.style.transform = `translate(${(x - rect.width / 2) / 10}px, ${(y - rect.height / 2) / 10}px) scale(1.1)`;
-    });
-
-    img.addEventListener('mouseleave', () => {
+      });
+      img.addEventListener('mouseleave', () => {
         img.style.transform = 'scale(1)';
+      });
     });
-});
+
+    // Profile popup animation & accessibility
+    function toggleProfileMenu() {
+      var menu = document.getElementById("profile-menu");
+      if (menu.style.display === "block") {
+        menu.style.display = "none";
+        menu.setAttribute('aria-hidden', 'true');
+      } else {
+        menu.style.display = "block";
+        menu.setAttribute('aria-hidden', 'false');
+        menu.focus();
+      }
+    }
+    window.toggleProfileMenu = toggleProfileMenu;
+
+    // Close menu when clicking outside or pressing Escape
+    document.addEventListener("click", function(event) {
+      var profileContainer = document.querySelector(".profile-container");
+      var profileMenu = document.getElementById("profile-menu");
+      if (profileMenu && profileMenu.style.display === "block" && !profileContainer.contains(event.target)) {
+        profileMenu.style.display = "none";
+        profileMenu.setAttribute('aria-hidden', 'true');
+      }
+    });
+    document.addEventListener("keydown", function(event) {
+      var profileMenu = document.getElementById("profile-menu");
+      if (profileMenu && profileMenu.style.display === "block" && event.key === "Escape") {
+        profileMenu.style.display = "none";
+        profileMenu.setAttribute('aria-hidden', 'true');
+      }
     });
 
-
-    //profile popup
-    
-function toggleProfileMenu() {
-    var menu = document.getElementById("profile-menu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
-
-  // Close menu when clicking outside
-  document.addEventListener("click", function(event) {
-    var profileContainer = document.querySelector(".profile-container");
-    var profileMenu = document.getElementById("profile-menu");
-
-    if (!profileContainer.contains(event.target)) {
-      profileMenu.style.display = "none";
+    // Help button tooltip
+    var helpBtn = document.getElementById('help-btn');
+    var helpTooltip = document.getElementById('help-tooltip');
+    if (helpBtn && helpTooltip) {
+      helpBtn.addEventListener('mouseenter', function() {
+        helpTooltip.style.display = 'block';
+      });
+      helpBtn.addEventListener('mouseleave', function() {
+        helpTooltip.style.display = 'none';
+      });
     }
-  });
 
-  // Toggle Hamburger Menu
-  document.getElementById("menu-btn").addEventListener("click", function() {
-    var menu = document.getElementById("nav-menu");
-    var button = document.getElementById("menu-btn");
+    // FAQ animation
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+      item.addEventListener('click', () => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+        // Hide all other answers
+        document.querySelectorAll('.faq-item').forEach(faq => {
+          if (faq !== parent) faq.classList.remove('active');
+        });
+      });
+    });
 
-    menu.classList.toggle("show");
-
-    // Toggle between hamburger and close (✖) icon
-    if (menu.classList.contains("show")) {
-      button.innerHTML = "&#10006;"; // Cross icon (✖)
-      button.style.color = "#fff"; // Change color if needed
-    } else {
-      button.innerHTML = "&#9776;"; // Hamburger icon (☰)
+    // Profile popup animation
+    function toggleProfileMenu() {
+      var menu = document.getElementById("profile-menu");
+      menu.classList.toggle("show");
+      if (menu.classList.contains("show")) {
+        menu.style.visibility = "visible";
+      } else {
+        menu.style.visibility = "hidden";
+      }
     }
-  });
+    window.toggleProfileMenu = toggleProfileMenu;
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function(event) {
+      var profileContainer = document.querySelector(".profile-container");
+      var profileMenu = document.getElementById("profile-menu");
+      if (profileMenu && !profileContainer.contains(event.target)) {
+        profileMenu.classList.remove("show");
+        profileMenu.style.visibility = "hidden";
+      }
+    });
+
+    // Toggle Hamburger Menu
+    document.getElementById("menu-btn").addEventListener("click", function() {
+      var menu = document.getElementById("nav-menu");
+      var button = document.getElementById("menu-btn");
+      menu.classList.toggle("show");
+      if (menu.classList.contains("show")) {
+        button.innerHTML = "&#10006;";
+        button.style.color = "#fff";
+      } else {
+        button.innerHTML = "&#9776;";
+      }
+    });
+
+    // Blog carousel auto-scroll and pause on hover
+    const carousel = document.getElementById('blog-carousel');
+    let carouselScroll = true;
+    let scrollAmount = 1;
+    function autoScrollCarousel() {
+      if (carouselScroll) {
+        carousel.scrollLeft += scrollAmount;
+        if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth || carousel.scrollLeft === 0) {
+          scrollAmount = -scrollAmount;
+        }
+      }
+      setTimeout(autoScrollCarousel, 30);
+    }
+    if (carousel) {
+      carousel.addEventListener('mouseenter', () => carouselScroll = false);
+      carousel.addEventListener('mouseleave', () => carouselScroll = true);
+      autoScrollCarousel();
+    }
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Dark theme toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    function setTheme(dark) {
+      if (dark) {
+        document.body.classList.add('dark-theme');
+        themeIcon.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.body.classList.remove('dark-theme');
+        themeIcon.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+    // On load, set theme from localStorage
+    (() => {
+      const saved = localStorage.getItem('theme');
+      setTheme(saved === 'dark');
+    })();
+    themeBtn.addEventListener('click', () => {
+      setTheme(!document.body.classList.contains('dark-theme'));
+    });
+
+    // Floating Help Button
+    document.getElementById('help-btn').onclick = function() {
+      var modal = document.getElementById('help-modal');
+      modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+    };
+    // Animated heading effect
+    document.querySelectorAll('.animated-heading').forEach(function(h) {
+      h.style.opacity = 0;
+      setTimeout(function() {
+        h.style.transition = "opacity 1.2s cubic-bezier(.4,0,.2,1)";
+        h.style.opacity = 1;
+      }, 300);
+    });
+
+    // Reveal on scroll animation
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => revealObs.observe(el));
+
+
+    // Animate sections on scroll using IntersectionObserver (framer-motion-like)
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedSections = document.querySelectorAll(
+        'header, .features, .blogs, .faq, .how-it-works, .quick-links, .profile-page, .fav-sheets, .prep, .image-container1'
+      );
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      animatedSections.forEach(section => {
+        section.style.animationPlayState = 'paused';
+        observer.observe(section);
+      });
+    });
+
+    // Animate hero content with staggered effect (framer-motion-like)
+    document.addEventListener('DOMContentLoaded', function() {
+      const heroEls = document.querySelectorAll('.hero-content h1, .hero-content h3, .hero-content p, .cta-buttons');
+      heroEls.forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(30px)';
+      });
+      setTimeout(() => {
+        heroEls.forEach((el, i) => {
+          setTimeout(() => {
+            el.style.transition = 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)';
+            el.style.opacity = 1;
+            el.style.transform = 'translateY(0)';
+          }, i * 120);
+        });
+      }, 300);
+    });
+
   </script>
 </body>
+</html>
 </html>

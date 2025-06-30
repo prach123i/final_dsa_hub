@@ -1,4 +1,4 @@
-   /* General Reset */
+/* General Reset */
    * {
     margin: 0;
     padding: 0;
@@ -6,80 +6,118 @@
   }
   
   body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Roboto', Arial, sans-serif;
+    background: linear-gradient(120deg, #181c24 60%, #21d397 100%);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
   }
   
+  /* Card effect for profile container */
   .profile-container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    background: #232a34;
+    padding: 38px 32px 32px 32px;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(33, 211, 151, 0.12), 0 2px 8px rgba(10, 143, 220, 0.10);
+    width: 410px;
     text-align: center;
+    animation: fadeIn 0.8s;
+    color: #e0e6ed;
+    position: relative;
+  }
+  .profile-container::before {
+    content: '';
+    position: absolute;
+    top: -30px; left: -30px; right: -30px; bottom: -30px;
+    background: linear-gradient(135deg, #21d39733 0%, #0a8fdc33 100%);
+    z-index: 0;
+    border-radius: 24px;
+    filter: blur(18px);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .profile-container > * {
+    position: relative;
+    z-index: 1;
   }
   
   h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
+    font-size: 2rem;
+    margin-bottom: 18px;
+    color: #21d397;
+    font-weight: 700;
+    letter-spacing: 1px;
   }
   
   .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     text-align: left;
   }
   
   label {
     display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #555;
+    margin-bottom: 6px;
+    font-size: 15px;
+    color: #21d397;
+    font-weight: 500;
   }
   
   input {
     width: 100%;
-    padding: 10px;
+    padding: 11px 14px;
     font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 1.5px solid #232a34;
+    border-radius: 7px;
     margin-top: 5px;
-    background-color: #f9f9f9;
+    background-color: #181c24;
+    color: #e0e6ed;
+    transition: border 0.3s, box-shadow 0.3s;
+    outline: none;
   }
   
   input:focus {
-    border-color: green;
-    outline: none;
+    border-color: #21d397;
+    box-shadow: 0 0 0 2px #21d39744;
+    background: #232a34;
   }
   
   button[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: green;
-    color: white;
+    background: linear-gradient(90deg, #21d397 0%, #0a8fdc 100%);
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 7px;
+    font-size: 17px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 8px;
+    box-shadow: 0 2px 8px rgba(33,211,151,0.10);
   }
   
   button[type="submit"]:hover {
-    background-color: green;
+    background: linear-gradient(90deg, #0a8fdc 0%, #21d397 100%);
+    transform: translateY(-2px) scale(1.03);
   }
   
   .cancel-button {
     display: inline-block;
-    margin-top: 10px;
-    font-size: 14px;
-    color: green;
+    margin-top: 14px;
+    font-size: 15px;
+    color: #0a8fdc;
     text-decoration: none;
+    transition: color 0.2s;
   }
   
   .cancel-button:hover {
+    color: #21d397;
     text-decoration: underline;
+  }
+  
+  /* Subtle fade-in animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(18px);}
+    to { opacity: 1; transform: translateY(0);}
   }

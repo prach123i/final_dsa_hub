@@ -12,6 +12,7 @@
     <!-- <link rel="stylesheet" href="/css/home.css"> -->
      <link rel="stylesheet" href="/css/showblogs.css">
      <link rel="stylesheet" href="/css/nav.css">
+     <link rel="stylesheet" href="/css/sidebar.css"><!-- Added for sidebar -->
 </head>
 <style>
      header nav ul{
@@ -50,8 +51,8 @@
                         <!-- Profile Action List (Initially Hidden) -->
                         <div id="profile-menu" class="profile-menu">
                           <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 100px; border-radius: 500px; margin-left: 45px; margin-top: 6px;"/>
-                          <div style="color: black; font-weight: bold; text-align: center;"><%= user.username %></div>
-                          <div style="color: black; font-size: 10px; text-align: center;"><%= user.email %></div>
+                          <div style="color: #6fed6f; font-weight: bold; text-align: center;"><%= user.username %></div>
+                          <div style="color: #6fed6f; font-size: 10px; text-align: center;"><%= user.email %></div>
                           <div class="divider" style=" border-bottom: 1px solid black; margin: 8px 0;"></div> 
                           <a href="/api/user/profile" class="profile-item">View Profile</a>
                           <a href="/api/user/profile-edit" class="profile-item">Edit Profile</a>
@@ -70,8 +71,7 @@
 
     <!-- Blog Section -->
     <div class="container2">
-        <%- include('./partials/nav.ejs') %>
-
+        <%- include('partials/sidebar') %>
         <div class="card-container">
             <% blogs.forEach(blog => { %>
                 <div class="card blog-card">
@@ -86,6 +86,43 @@
         </div>
     </div>
 
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle Hamburger Menu
+        document.getElementById("menu-btn").addEventListener("click", function() {
+            var menu = document.getElementById("nav-menu");
+            var button = document.getElementById("menu-btn");
+      
+            menu.classList.toggle("show");
+      
+            // Toggle between hamburger and close (✖) icon
+            if (menu.classList.contains("show")) {
+              button.innerHTML = "&#10006;"; // Cross icon (✖)
+              button.style.color = "#fff"; // Change color if needed
+            } else {
+              button.innerHTML = "&#9776;"; // Hamburger icon (☰)
+            }
+          });
+      
+          function toggleProfileMenu() {
+            var menu = document.getElementById("profile-menu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+          }
+      
+          // Close menu when clicking outside
+          document.addEventListener("click", function(event) {
+            var profileContainer = document.querySelector(".profile-container");
+            var profileMenu = document.getElementById("profile-menu");
+      
+            if (!profileContainer.contains(event.target)) {
+              profileMenu.style.display = "none";
+            }
+          });
+    </script>
+</body>
+
+</html>
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>

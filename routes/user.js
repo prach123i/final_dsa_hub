@@ -157,14 +157,24 @@ router.post("/profile-edit",isLoggedIn, async (req, res) => {
   }
 });
 
-router.get('/front', async (req,res)=>{
-  res.render('front',{user:req.user});
+
+router.get('/authfront', async (req, res) => {
+  try {
+    const token = req.cookies.token;
+    let user = null;
+
+    if (token) {
+      const verified = jwt.verify(token, process.env.JWT_SECRET);
+      user = await User.findById(verified.userid).lean(); // 🔥 KEY LINE
+    }
+
+    res.render('authfront', { user });
+  } catch (error) {
+    res.render('authfront', { user: null });
+  }
 });
 
-router.get('/authfront',isLoggedIn,async (req,res)=>{
-  const user = await User.findById(req.user.userid);  // Using req.user for authenticated user
-  res.render('authfront',{user});
-})
+
 router.get('/sheets',isLoggedIn, async (req,res)=>{
   const user = await User.findById(req.user.userid);
   if (!user) {
@@ -184,7 +194,7 @@ router.get("/signin", (req, res) => {
 
 router.get("/logout", function(req,res){
   res.cookie('token',"");
-  res.redirect("/api/user/front");
+  res.redirect("/api/user/authfront");
 })
 router.get("/home",isLoggedIn,async(req,res)=>{
   const user = await User.findById(req.user.userid);

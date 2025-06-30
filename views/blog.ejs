@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/css/blog.css">
     <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/sidebar.css"><!-- Added for sidebar -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
    
 </head>
@@ -38,8 +39,8 @@
                         <!-- Profile Action List (Initially Hidden) -->
                         <div id="profile-menu" class="profile-menu">
                           <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 100px; border-radius: 500px; margin-left: 45px; margin-top: 6px;"/>
-                          <div style="color: black; font-weight: bold; text-align: center;"><%= user.username %></div>
-                          <div style="color: black; font-size: 10px; text-align: center;"><%= user.email %></div>
+                          <div style="color: #6fed6f; font-weight: bold; text-align: center;"><%= user.username %></div>
+                          <div style="color: #6fed6f; font-size: 10px; text-align: center;"><%= user.email %></div>
                           <div class="divider" style=" border-bottom: 1px solid black; margin: 8px 0;"></div> 
                           <a href="/api/user/profile" class="profile-item">View Profile</a>
                           <a href="/api/user/profile-edit" class="profile-item">Edit Profile</a>
@@ -55,7 +56,7 @@
         </div>
     </header>
     <div class="container2">
-        <%- include('./partials/nav.ejs') %>
+        <%- include('partials/sidebar') %>
         <div class="container3 mt-3">
             <form action="/blog" method="POST" enctype="multipart/form-data">
                 <h2 style="text-align: center;">Create a New Blog</h2>

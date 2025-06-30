@@ -1,0 +1,23 @@
+<!-- Sidebar Partial -->
+<div class="sidebar">
+  <% if (user) { %>
+    <div class="welcome" style="margin-bottom:18px;">
+      <i class="fa fa-user-circle" style="font-size:2rem;color:#6fed6f;margin-bottom:4px;"></i>
+      <div style="font-weight:600;">Welcome, <%= user.username %>!</div>
+    </div>
+  <% } else { %>
+    <div class="welcome" style="margin-bottom:18px;">
+      <i class="fa fa-user-circle" style="font-size:2rem;color:#6fed6f;margin-bottom:4px;"></i>
+      <div style="font-weight:600;">Welcome to DSA Hub!</div>
+    </div>
+  <% } %>
+
+  <nav>
+    <ul style="list-style:none; padding:0;">
+      <li><a href="/api/user/home" class="nav-item"><i class="fa fa-home"></i> Dashboard</a></li>
+      <li><a href="/blog/add-new" class="nav-item"><i class="fa fa-pen"></i> Post Blog</a></li>
+      <li><a href="/api/user/sheets" class="nav-item"><i class="fa fa-table"></i> Explore Sheets</a></li>
+      <li><a href="/blog/show-blogs" class="nav-item"><i class="fa fa-book"></i> See All Blogs</a></li>
+    </ul>
+  </nav>
+</div>

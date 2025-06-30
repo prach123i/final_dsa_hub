@@ -8,15 +8,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/sheet.css">
     <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/showblogs.css">
+    <link rel="stylesheet" href="/css/sidebar.css"><!-- Added for sidebar -->
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="/api/user/authfront"  rel="noopener noreferrer">
+            <a href="/api/user/authfront" rel="noopener noreferrer">
                 <div class="logo">DSA <span>Hub</span></div>
             </a>
             <!-- Hamburger Menu Button -->
-            <button id="menu-btn" class="hamburger">&#9776;</button>
+           
             <nav id="nav-menu" class="nav-links">
                 <ul>
                     <li><a href="/api/user/home">Solve Questions</a></li>
@@ -31,18 +33,17 @@
                         <a href="javascript:void(0);" onclick="toggleProfileMenu()">
                           <img src="/images/pf.png" alt="Profile Icon" class="profile-icon"/>
                         </a>
-                      
                         <!-- Profile Action List (Initially Hidden) -->
                         <div id="profile-menu" class="profile-menu">
                           <img src="/images/pf.png" alt="Profile Icon" class="profile-icon" style="width: 100px; border-radius: 500px; margin-left: 45px; margin-top: 6px;"/>
-                          <div style="color: black; font-weight: bold; text-align: center;"><%= user.username %></div>
-                          <div style="color: black; font-size: 10px; text-align: center;"><%= user.email %></div>
-                          <div class="divider" style=" border-bottom: 1px solid black; margin: 8px 0;"></div> 
+                          <div style="color: #6fed6f; font-weight: bold; text-align: center;"><%= user.username %></div>
+                          <div style="color: #6fed6f; font-size: 10px; text-align: center;"><%= user.email %></div>
+                          <div class="divider" style="border-bottom: 1px solid #7fffd4; margin: 8px 0;"></div>
                           <a href="/api/user/profile" class="profile-item">View Profile</a>
                           <a href="/api/user/profile-edit" class="profile-item">Edit Profile</a>
                           <a href="/api/user/logout" class="profile-item">Logout</a>
                         </div>
-                      </div>
+                    </div>
                 <% } else { %>
                     <a href="/api/user/signin" class="btn login-btn">Login</a>
                     <a href="/api/user/signup" class="btn signup-btn">Signup</a>
@@ -51,33 +52,42 @@
         </div>
     </header>
     <div class="sheet-page">
-        <%- include('./partials/nav.ejs') %>
+        <%- include('partials/sidebar') %>
         <div class="right">
             <div class="right-top">All Coding Sheets</div>
             <div class="cards">
                 <div class="card">
-                    <a href="https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems"> <h3>Striver's SDE Sheet</h3>  </a>
-                </div>
-                <div class="card">
-                    <a href="https://leetcode.com/studyplan/top-interview-150/"><h3>Top Interview 150: Leetcode</h3>
+                    <a href="https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems">
+                        <h3>Striver's SDE Sheet</h3>
                     </a>
                 </div>
                 <div class="card">
-                    <a href="https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions"> <h3>Blind 75</h3></a>
+                    <a href="https://leetcode.com/studyplan/top-interview-150/">
+                        <h3>Top Interview 150: Leetcode</h3>
+                    </a>
                 </div>
                 <div class="card">
-                    <a href="https://neetcode.io/practice?tab=neetcode150"><h3>Neetcode 150</h3></a>
-                    
+                    <a href="https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions">
+                        <h3>Blind 75</h3>
+                    </a>
                 </div>
                 <div class="card">
-                    <a href="https://leetcode.com/problem-list/9x5spweh/"><h3>Dp for Beginners</h3></a>
-                 
+                    <a href="https://neetcode.io/practice?tab=neetcode150">
+                        <h3>Neetcode 150</h3>
+                    </a>
                 </div>
                 <div class="card">
-                    <a href="https://github.com/hxu296/leetcode-company-wise-problems-2022/blob/main/companies/Amazon.csv#L2"><h3>Leetcode Company wise Questions</h3></a>
+                    <a href="https://leetcode.com/problem-list/9x5spweh/">
+                        <h3>Dp for Beginners</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://github.com/hxu296/leetcode-company-wise-problems-2022/blob/main/companies/Amazon.csv#L2">
+                        <h3>Leetcode Company wise Questions</h3>
+                    </a>
                 </div>
             </div>
-            <div class="right-top">System Design
+            <div class="right-top" style="margin-top: 32px;">System Design
                 <h4>Some Important Links</h4>
             </div>
             <div class="links">
@@ -91,21 +101,7 @@
         </div>
     </div>
     <script>
-        // Toggle Hamburger Menu
-        document.getElementById("menu-btn").addEventListener("click", function() {
-            var menu = document.getElementById("nav-menu");
-            var button = document.getElementById("menu-btn");
-          
-            menu.classList.toggle("show");
-          
-            // Toggle between hamburger and close (✖) icon
-            if (menu.classList.contains("show")) {
-              button.innerHTML = "&#10006;"; // Cross icon (✖)
-              button.style.color = "#fff"; // Change color if needed
-            } else {
-              button.innerHTML = "&#9776;"; // Hamburger icon (☰)
-            }
-          });
+       
           
         function toggleProfileMenu() {
             var menu = document.getElementById("profile-menu");

@@ -7,60 +7,222 @@
     <link rel="stylesheet" href="/css/styles.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #181a1b;
+            color: #f1f1f1;
+        }
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+        .container {
+            background: rgba(34, 40, 49, 0.95);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(30,60,114,0.18);
+            padding: 40px 32px 32px 32px;
+            max-width: 350px;
+            width: 100%;
+            margin: 32px 0;
+            animation: fadeInUp 1s cubic-bezier(.39,.575,.565,1) both;
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px);}
+            100% { opacity: 1; transform: none;}
+        }
+        .container h1 {
+            text-align: center;
+            color: #6fed6f;
+            font-weight: 700;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+        .container label {
+            color: #6fed6f;
+            font-weight: 500;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .container input[type="email"],
+        .container input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 18px;
+            border: 1px solid #2a5298;
+            border-radius: 7px;
+            font-size: 16px;
+            background: #232526;
+            color: #f1f1f1;
+            transition: border 0.2s, background 0.2s;
+        }
+        .container input:focus {
+            border: 1.5px solid #6fed6f;
+            background: #1e222a;
+            outline: none;
+        }
+        .container button[type="submit"] {
+            width: 100%;
+            background: linear-gradient(90deg, #6fed6f 0%, #2a5298 100%);
+            color: #232526;
+            font-weight: bold;
+            border: none;
+            border-radius: 7px;
+            padding: 12px 0;
+            font-size: 18px;
+            margin-top: 8px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s, color 0.2s;
+        }
+        .container button[type="submit"]:hover {
+            background: linear-gradient(90deg, #2a5298 0%, #6fed6f 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.03);
+        }
+        .container h5 {
+            margin: 10px 0 0 0;
+            font-size: 13px;
+            text-align: center;
+            color: #aaa;
+        }
+        .container h5 a {
+            color: #6fed6f;
+            text-decoration: underline;
+        }
+        .container p {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .container-right {
+            background: transparent;
+            border-radius: 18px;
+            box-shadow: none;
+            padding: 40px 32px 32px 32px;
+            max-width: 420px;
+            width: 100%;
+            margin: 32px auto;
+            color: #f1f1f1;
+            animation: fadeInUp 1.2s cubic-bezier(.39,.575,.565,1) both;
+        }
+        .container-right h2 {
+            color: #6fed6f;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .container-right p {
+            color: #e0eafc;
+            margin-bottom: 24px;
+        }
+        .feature-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: rgba(30,60,114,0.18);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #0002;
+            padding: 14px 18px;
+        }
+        .feature-icon {
+            font-size: 32px;
+            color: #6fed6f;
+            margin-top: 2px;
+            animation: iconPulse 2s infinite alternate;
+        }
+        @keyframes iconPulse {
+            0% { transform: scale(1);}
+            100% { transform: scale(1.15);}
+        }
+        .feature h3 {
+            margin: 0 0 4px 0;
+            font-size: 18px;
+            color: #6fed6f;
+        }
+        .feature p {
+            margin: 0;
+            font-size: 14px;
+            color: #e0eafc;
+        }
+        @media (max-width: 900px) {
+            .main, .container-right {
+                max-width: 98vw;
+            }
+            .main {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .container, .container-right {
+                margin: 18px auto;
+            }
+        }
+        @media (max-width: 600px) {
+            .container, .container-right {
+                padding: 18px 4vw;
+                border-radius: 10px;
+            }
+            .feature {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="main">
-
         <div class="container">
             <div>
-            <h1>Signin</h1>
-        </div>
+                <h1>Signin</h1>
+            </div>
             <% if (typeof msg !== 'undefined') { %>
-                <p style="color: red;"><%= msg %></p>
+                <p style="color: #ff6b6b;"><%= msg %></p>
             <% } %>
             <% if (typeof error !== 'undefined') { %>
-                <p style="color: red;"><%= error %></p>
+                <p style="color: #ff6b6b;"><%= error %></p>
             <% } %>
             <form action="/api/user/signin" method="POST">
                 <label for="Email">Email:</label>
                 <input type="email" id="Email" name="email" required>
-                <br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
-                <br>
                 <h5>If you don't have an account <a href="/api/user/signup">sign up</a></h5>
                 <button type="submit">Sign In</button>
             </form>
-        </div>    
+        </div>
     </div>
-
     <div class="container-right">
-        <h2>Welcome to DSA Hub
-        </h2>
+        <h2>Welcome to DSA Hub</h2>
         <p>Sign in to continue your journey with us.</p>
         <div class="feature-grid">
             <div class="feature">
-              <i class="fas fa-tasks feature-icon"></i>
-              <div>
-              <h3>Curated DSA Problems</h3>
-              <p>Access questions tailored for beginners to advanced coders, categorized by difficulty and topic.</p>
-            </div>
-            </div>
-            <div class="feature">
-              <i class="fas fa-edit feature-icon"></i>
-              <div>
-              <h3>Blog Your Journey</h3>
-              <p>Share experiences, tips, and insights with others to create a collaborative learning environment.</p>
-            </div>
+                <i class="fas fa-tasks feature-icon"></i>
+                <div>
+                    <h3>Curated DSA Problems</h3>
+                    <p>Access questions tailored for beginners to advanced coders, categorized by difficulty and topic.</p>
+                </div>
             </div>
             <div class="feature">
-              <i class="fas fa-medal feature-icon"></i>
-              <div>
-              <h3>Earn Achievements</h3>
-              <p>Track progress and earn badges as you complete challenges and contribute blogs.</p>
+                <i class="fas fa-edit feature-icon"></i>
+                <div>
+                    <h3>Blog Your Journey</h3>
+                    <p>Share experiences, tips, and insights with others to create a collaborative learning environment.</p>
+                </div>
             </div>
+            <div class="feature">
+                <i class="fas fa-medal feature-icon"></i>
+                <div>
+                    <h3>Earn Achievements</h3>
+                    <p>Track progress and earn badges as you complete challenges and contribute blogs.</p>
+                </div>
             </div>
-</div>
+        </div>
     </div>
 </body>
 </html>
