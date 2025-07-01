@@ -15,20 +15,16 @@ header .container {
     align-items: center;
 }
 
-header .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #e0e6ed;
-}
-
-header .logo a {
-    text-decoration: none;
-    color: #e0e6ed;
-}
-
-header .logo span {
-    color: #6fed6f;
-}
+.logo, .logo span {
+      color: #21d397 !important;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px rgba(33,211,151,0.10);
+    }
+    .logo span {
+      color: #0a8fdc !important;
+    }
 
 .nav-links {
     display: flex;

@@ -10,11 +10,13 @@
 <body>
     <div class="container">
         <!-- Blog Title -->
-        <h1 class="mt-4"><i class="fas fa-book-open"></i> <%= blog.title %></h1>
+        <h1 class="mt-4" style="color: white;"><i class="fas fa-book-open"></i> <%= blog.title %></h1>
 
         <!-- Author Info -->
         <div class="author-info">
-            <img src="<%= blog.createdBy && blog.createdBy.profileImageURL ? blog.createdBy.profileImageURL : '/images/profile.png' %>" alt="Profile Picture">
+            <span style="font-size:2.5rem;color:#6fed6f;">
+                <i class="fas fa-user-circle"></i>
+            </span>
             <h2><i class="fas fa-user"></i> <%= blog.createdBy ? blog.createdBy.username : 'Anonymous' %></h2>
         </div>
 
@@ -33,7 +35,7 @@
                 <% blog.comments.forEach(comment => { %>
                     <div class="comment">
                         <strong><i class="fas fa-user-circle"></i> <%= comment.createdBy.username %></strong>
-                        <small class="text-muted"><i class="fas fa-clock"></i> <%= new Date(comment.createdAt).toLocaleString() %></small>
+                        <small class="text-muted" style="color: whitesmoke !important;"><i class="fas fa-clock"></i> <%= new Date(comment.createdAt).toLocaleString() %></small>
                         <p><%= comment.text %></p>
                     </div>
                 <% }); %>
@@ -58,10 +60,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </body>
 </html>
-        <!-- Back Button -->
-        <a href="/blog/show-blogs" class="btn btn-secondary mt-4">Back to All Blogs</a>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

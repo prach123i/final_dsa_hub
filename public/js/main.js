@@ -48,28 +48,45 @@ function toggleDropdown(dropdownId) {
     }
 }
 
-// Function to load the checkbox state from localStorage
-function loadCheckboxState() {
-    const checkboxes = document.querySelectorAll('.topic-checkbox');
-    checkboxes.forEach(function(checkbox) {
-        const checkboxId = checkbox.getAttribute('data-topic');
-        const isChecked = localStorage.getItem(checkboxId) === 'true';
-        checkbox.checked = isChecked;
-    });
+// --- USER-SPECIFIC CHECKBOX STATE LOGIC --
 
-    // Update the progress bar after loading the checkbox state
+// Get current user ID from global JS variable set in EJS template
+function getCurrentUserId() {
+    return window.currentUserId || null;
+}
+
+// Get the localStorage key for the current user
+function getUserProgressKey() {
+    const userId = getCurrentUserId();
+    return userId ? `progress_${userId}` : null;
+}
+
+// Load checkbox state for the current user
+function loadCheckboxState() {
+    const key = getUserProgressKey();
+    let state = {};
+    if (key) {
+        try {
+            state = JSON.parse(localStorage.getItem(key)) || {};
+        } catch { state = {}; }
+    }
+    document.querySelectorAll('.topic-checkbox').forEach(function(checkbox) {
+        const checkboxId = checkbox.getAttribute('data-topic');
+        checkbox.checked = !!state[checkboxId];
+    });
     updateProgress();
 }
 
-// Function to save the checkbox state to localStorage
+// Save checkbox state for the current user
 function saveCheckboxState() {
-    const checkboxes = document.querySelectorAll('.topic-checkbox');
-    checkboxes.forEach(function(checkbox) {
+    const key = getUserProgressKey();
+    if (!key) return;
+    const state = {};
+    document.querySelectorAll('.topic-checkbox').forEach(function(checkbox) {
         const checkboxId = checkbox.getAttribute('data-topic');
-        localStorage.setItem(checkboxId, checkbox.checked);
+        state[checkboxId] = checkbox.checked;
     });
-
-    // Update the progress bar after saving the state
+    localStorage.setItem(key, JSON.stringify(state));
     updateProgress();
 }
 

@@ -250,6 +250,9 @@
         .theme-toggle-btn { right: 12px; top: 12px; width: 36px; height: 36px; font-size: 1.1rem; }
       }
     </style>
+    <script>
+      window.currentUserId = "<%= user ? user._id : '' %>";
+    </script>
 </head>
 <body>
   <div class="bg-anim"></div>
@@ -730,18 +733,21 @@
   <script src="/js/main.js"></script>
   <script>
     // Toggle Hamburger Menu
-    document.getElementById("menu-btn").addEventListener("click", function() {
-      var menu = document.getElementById("nav-menu");
-      var button = document.getElementById("menu-btn");
-      menu.classList.toggle("show");
-      if (menu.classList.contains("show")) {
-        button.innerHTML = "&#10006;";
-        button.style.color = "#6fed6f";
-      } else {
-        button.innerHTML = "&#9776;";
-        button.style.color = "#6fed6f";
-      }
-    });
+    const menuBtn = document.getElementById("menu-btn");
+    if (menuBtn) {
+      menuBtn.addEventListener("click", function() {
+        var menu = document.getElementById("nav-menu");
+        var button = document.getElementById("menu-btn");
+        menu.classList.toggle("show");
+        if (menu.classList.contains("show")) {
+          button.innerHTML = "&#10006;";
+          button.style.color = "#6fed6f";
+        } else {
+          button.innerHTML = "&#9776;";
+          button.style.color = "#6fed6f";
+        }
+      });
+    }
 
     // Improved toggleDropdown: only one open at a time, with animation and card highlight
     function toggleDropdown(topic, event) {
@@ -788,22 +794,33 @@
 
     // Theme toggle
     const themeBtn = document.getElementById('theme-toggle-btn');
-    themeBtn.addEventListener('click', function() {
-      document.body.classList.toggle('light');
-      themeBtn.classList.toggle('light');
-      themeBtn.innerHTML = document.body.classList.contains('light')
-        ? '<i class="fa fa-sun"></i>'
-        : '<i class="fa fa-moon"></i>';
-    });
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function() {
+        document.body.classList.toggle('light');
+        themeBtn.classList.toggle('light');
+        themeBtn.innerHTML = document.body.classList.contains('light')
+          ? '<i class="fa fa-sun"></i>'
+          : '<i class="fa fa-moon"></i>';
+      });
+    }
 
-    // Floating action button: Suggest random question (mockup)
-    document.getElementById('fab-suggest').addEventListener('click', function() {
-      const checkboxes = Array.from(document.querySelectorAll('.topic-checkbox'));
-      if (checkboxes.length === 0) return;
-      const random = checkboxes[Math.floor(Math.random() * checkboxes.length)];
-      random.closest('li').scrollIntoView({behavior: 'smooth', block: 'center'});
-      random.closest('li').style.background = '#3aeeff33';
-      setTimeout(() => { random.closest('li').style.background = ''; }, 1200);
+    // --- Fix: Attach random question button after DOM is loaded ---
+    document.addEventListener('DOMContentLoaded', function() {
+      const fabSuggest = document.getElementById('fab-suggest');
+      if (fabSuggest) {
+        fabSuggest.addEventListener('click', function() {
+          const links = Array.from(document.querySelectorAll('.topic-checkbox')).map(cb => {
+            // Find the closest <a> ancestor for each checkbox
+            let a = cb.closest('a');
+            // Only include if <a> has an href
+            return a && a.href ? a : null;
+          }).filter(Boolean);
+          if (links.length === 0) return;
+          const randomLink = links[Math.floor(Math.random() * links.length)];
+          // Redirect to the random question link
+          window.open(randomLink.href, '_blank');
+        });
+      }
     });
   </script>
 </body>
