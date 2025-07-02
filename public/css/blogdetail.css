@@ -162,12 +162,22 @@ p {
   z-index: 1000;
 }
 
+@media (max-width: 1100px) {
+  .container {
+    padding: 16px;
+    margin-top: 18px;
+    max-width: 98vw;
+  }
+}
+
 @media (max-width: 900px) {
   .container {
     padding: 12px;
     margin-top: 18px;
+    max-width: 98vw;
   }
 }
+
 @media (max-width: 768px) {
   .sidebar {
     display: none;
@@ -188,6 +198,7 @@ p {
   .container {
     padding: 10px;
     margin-top: 10px;
+    max-width: 100vw;
   }
 
   .author-info {
@@ -199,11 +210,16 @@ p {
   .author-info img {
     margin-bottom: 10px;
   }
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 @media (max-width: 480px) {
   .container {
     padding: 6px;
+    max-width: 100vw;
   }
 
   .author-info img {
@@ -213,6 +229,7 @@ p {
 
   .img-fluid {
     max-height: 160px;
+    width: 100%;
   }
 
   p {

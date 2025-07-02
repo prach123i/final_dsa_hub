@@ -29,55 +29,45 @@ header .container {
 .nav-links {
     display: flex;
 }
-
-.nav-links ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links ul li a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #e0e6ed;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: background 0.2s, color 0.2s;
-    background: none;
-}
-
-.nav-links ul li a:hover,
-.nav-links ul li a.active {
-    background: linear-gradient(90deg, #6fed6f 0%, #3aeeff 100%);
-    color: #232526;
-}
-
-.hidden-links {
+.hamburger {
     display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: 18px;
+    background: none;
+    border: none;
+    outline: none;
+    z-index: 1101;
+}
+.hamburger span {
+    height: 3px;
+    width: 26px;
+    background: #6fed6f;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
 }
 
-.navbar {
-    padding: 0;
-}
-
-.profile-item {
-    display: block;
-    padding: 8px 12px;
-    text-decoration: none;
-    color: #21d397;
-    font-size: 14px;
-    border-radius: 6px;
-    transition: background 0.2s, color 0.2s;
-}
-
-.profile-item:hover {
-    background-color: #232a34;
-    color: #6fed6f;
-}
-
-@media screen and (max-width: 768px) {
+/* Responsive nav menu */
+@media screen and (max-width: 900px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #232a34;
+        flex-direction: column;
+        width: 190px;
+        box-shadow: 0 2px 8px #0002;
+        padding: 12px 0;
+        z-index: 1100;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .hamburger {
+        display: flex;
+    }
     header .container {
         flex-direction: row;
         align-items: center;
@@ -88,8 +78,8 @@ header .container {
         margin-left: 0px;
     }
     .nav-links ul li a {
-        color: #232a34;
-        background: #7fffd4;
+        color: white;
+        /* background: #7fffd4; */
     }
     .nav-links ul li a:hover,
     .nav-links ul li a.active {
@@ -100,3 +90,49 @@ header .container {
         display: block;
     }
 }
+
+/* Sidebar responsive for home page */
+@media screen and (max-width: 900px) {
+    .sidebar {
+        display: none !important;
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1200;
+        background: #232a34;
+    }
+    .sidebar.active {
+        display: flex !important;
+        flex-direction: column;
+    }
+}
+
+/* Hamburger for sidebar (home page) */
+.sidebar-hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin: 12px 0 0 12px;
+    background: none;
+    border: none;
+    outline: none;
+    z-index: 1201;
+}
+.sidebar-hamburger span {
+    height: 3px;
+    width: 26px;
+    background: #6fed6f;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+@media screen and (max-width: 900px) {
+    .sidebar-hamburger {
+        display: flex;
+    }
+}
+
+/* ...existing code... */

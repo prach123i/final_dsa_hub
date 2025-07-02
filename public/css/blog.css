@@ -71,8 +71,8 @@ header {
 
 .nav-links ul li a:hover,
 .nav-links ul li a.active {
-  background: linear-gradient(90deg, #6fed6f 0%, #3aeeff 100%);
-  color: #232526;
+  background: linear-gradient(90deg, #21d397 0%, #3aeeff 100%);
+  color: black;
 }
 
 .hidden-links {
@@ -214,6 +214,48 @@ input[type="file"] {
 }
 
 /* Responsive Design */
+@media (max-width: 1100px) {
+  .container2 {
+    flex-direction: column;
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+  }
+  .sidebar {
+    display: none;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    position: static;
+    background-color: #232a34;
+  }
+  .container3 {
+    width: 90%;
+    margin: 30px auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .container2 {
+    flex-direction: column;
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+  }
+  .sidebar {
+    display: none;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    position: static;
+    background-color: #232a34;
+  }
+  .container3 {
+    width: 90%;
+    margin: 30px auto;
+  }
+}
+
 @media (max-width: 768px) {
   .profile-menu{
     display: none;
@@ -234,20 +276,18 @@ input[type="file"] {
   }
   .nav-links ul li a {
     color: #232a34;
-    background: #7fffd4;
   }
   .nav-links ul li a:hover,
-  .nav-links ul li a.active {
-    background: linear-gradient(90deg, #6fed6f 0%, #3aeeff 100%);
-    color: #232526;
-  }
-  .hamburger {
-    display: block; /* Show button on small screens */
-    margin-top: 9px;
+.nav-links ul li a.active {
+  background: linear-gradient(90deg, #21d397 0%, #3aeeff 100%);
+  color: black;
 }
-
-.nav-links {
-    display: none; /* Hide the menu initially */
+  .hamburger {
+    display: block;
+    margin-top: 9px;
+  }
+  .nav-links {
+    display: none;
     position: absolute;
     top: 60px;
     right: 0;
@@ -256,11 +296,10 @@ input[type="file"] {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 15px;
     border-radius: 5px;
-}
-
-.nav-links.show {
-    display: block; /* Show when hamburger is clicked */
-}
+  }
+  .nav-links.show {
+    display: block;
+  }
   .show {
     display: flex !important;
   }
@@ -271,8 +310,8 @@ input[type="file"] {
     overflow-y: auto;
   }
   .profile-menu {
-    margin-right: 70px;
-    margin-top: 170px;
+    margin-right: -141px;
+        margin-top: 25px;
   }
   .profile-icon {
     margin-left: 0px;
@@ -288,7 +327,7 @@ input[type="file"] {
     top: 0;
     left: 0;
     z-index: 999;
-    background-color: black;
+    background-color: #232a34;
     padding: 10px;
   }
   .sidebar-toggle {
@@ -300,54 +339,13 @@ input[type="file"] {
   .container3 {
     margin: 15px;
     padding: 15px;
-  }
-}
-
-@media (min-width: 769px) {
-  .hidden-links {
-    display: none;
-  }
-}
-
-@media (max-width: 1024px) {
-  .container2 {
-    flex-direction: column;
-    margin-left: 0;
     width: 100%;
-    height: auto;
-  }
-  .sidebar {
-    display: none;
-    width: 100%;
-    height: auto;
-    padding: 15px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    background-color: black;
-  }
-  .sidebar-toggle {
-    display: block;
-  }
-  .sidebar img {
-    width: 80px;
-    height: 80px;
-  }
-  .nav-item {
-    width: auto;
-    display: inline-block;
-    padding: 10px;
-  }
-  .container3 {
-    width: 90%;
-    margin: 30px auto;
   }
 }
 
 @media (max-width: 576px) {
   .nav-item span {
-    display: none; /* Hide text, only show icons */
+    display: none;
   }
   .sidebar {
     width: 60px;
@@ -359,6 +357,14 @@ input[type="file"] {
   .sidebar img {
     width: 80px;
     height: 80px;
+  }
+  .container3 {
+    padding: 10px;
+    width: 100%;
+  }
+  .btn-primary {
+    padding: 8px;
+    font-size: 14px;
   }
 }
 
@@ -375,6 +381,7 @@ input[type="file"] {
   }
   .container3 {
     padding: 10px;
+    width: 100%;
   }
   .btn-primary {
     padding: 8px;
@@ -395,14 +402,6 @@ input[type="file"] {
 .profile-item:hover {
   background-color: #f0f0f0;
 }
-  .sidebar img {
-    width: 80px;
-    height: 80px;
-  }
-  .nav-item {
-    width: auto;
-    display: inline-block;
-    padding: 10px;
   }
   .container3 {
     width: 90%;

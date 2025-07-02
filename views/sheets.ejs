@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/sheet.css">
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/showblogs.css">
     <link rel="stylesheet" href="/css/sidebar.css"><!-- Added for sidebar -->
 </head>
 <body>
@@ -18,7 +17,7 @@
         <div class="logo">DSA <span>Hub</span></div>
       </a>
             <!-- Hamburger Menu Button -->
-           
+            <button id="menu-btn" class="hamburger">&#9776;</button>
             <nav id="nav-menu" class="nav-links">
                 <ul>
                     <li><a href="/api/user/home">Solve Questions</a></li>
@@ -101,22 +100,44 @@
         </div>
     </div>
     <script>
-       
-          
+        // Hamburger menu toggle
+        const menuBtn = document.getElementById("menu-btn");
+        const navMenu = document.getElementById("nav-menu");
+        if (menuBtn && navMenu) {
+            menuBtn.addEventListener("click", function(event) {
+                navMenu.classList.toggle("show");
+                if (navMenu.classList.contains("show")) {
+                    menuBtn.innerHTML = "&#10006;";
+                    menuBtn.style.color = "#6fed6f";
+                } else {
+                    menuBtn.innerHTML = "&#9776;";
+                    menuBtn.style.color = "#6fed6f";
+                }
+                event.stopPropagation();
+            });
+            // Close menu when clicking outside
+            document.addEventListener("click", function(event) {
+                if (!navMenu.contains(event.target) && event.target !== menuBtn) {
+                    navMenu.classList.remove("show");
+                    menuBtn.innerHTML = "&#9776;";
+                    menuBtn.style.color = "#6fed6f";
+                }
+            });
+        }
+
         function toggleProfileMenu() {
             var menu = document.getElementById("profile-menu");
             menu.style.display = menu.style.display === "block" ? "none" : "block";
-          }
-        
-          // Close menu when clicking outside
-          document.addEventListener("click", function(event) {
+        }
+
+        // Close profile menu when clicking outside
+        document.addEventListener("click", function(event) {
             var profileContainer = document.querySelector(".profile-container");
             var profileMenu = document.getElementById("profile-menu");
-        
-            if (!profileContainer.contains(event.target)) {
-              profileMenu.style.display = "none";
+            if (profileMenu && profileContainer && !profileContainer.contains(event.target)) {
+                profileMenu.style.display = "none";
             }
-          });
+        });
     </script>
 </body>
 </html>

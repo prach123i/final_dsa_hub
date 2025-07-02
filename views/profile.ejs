@@ -254,6 +254,14 @@
       width: 90px;
       align-self: flex-end;
     }
+    .nav-links ul {
+      display: flex;
+      gap: 24px;
+      list-style: none; /* Ensure no bullets/points */
+      margin: 0;
+      padding: 0;
+      align-items: left;
+    }
     @media (max-width: 900px) {
       .profile-container {
         flex-direction: column;
@@ -269,6 +277,15 @@
         background: #232a34 !important;
         color: #e0e6ed !important;
       }
+      .nav-links ul {
+        flex-direction: column;
+        gap: 0;
+        list-style: none; /* Also ensure no bullets on mobile */
+        margin: 0;
+              padding: 6px 12px;
+              line-height: 2;
+              font-weight: 800;
+      }
     }
   </style>
 </head>
@@ -278,6 +295,8 @@
       <a href="/api/user/authfront" rel="noopener noreferrer">
         <div class="logo">DSA <span>Hub</span></div>
       </a>
+      <!-- Hamburger Menu Button -->
+      <button id="menu-btn" class="hamburger">&#9776;</button>
       <nav id="nav-menu" class="nav-links">
         <ul>
           <li><a href="/api/user/home">Solve Questions</a></li>
@@ -308,8 +327,6 @@
           <a href="/api/user/signup" class="btn signup-btn">Signup</a>
         <% } %>
       </div>
-      <!-- Hamburger Menu Button -->
-      <button id="menu-btn" class="hamburger">&#9776;</button>
     </div>
   </header>
 
@@ -377,33 +394,29 @@
   </div>
   <script>
     // Toggle Hamburger Menu
-    document.getElementById("menu-btn").addEventListener("click", function(event) {
-      var menu = document.getElementById("nav-menu");
-      var button = document.getElementById("menu-btn");
-      
-      menu.classList.toggle("show");
-  
-      // Toggle between hamburger and close (✖) icon
-      if (menu.classList.contains("show")) {
-        button.innerHTML = "&#10006;"; // Cross icon (✖)
-        button.style.color = "#fff"; // Optional: Change color
-      } else {
-        button.innerHTML = "&#9776;"; // Hamburger icon (☰)
-      }
-  
-      event.stopPropagation(); // Prevent event from bubbling up
-    });
-  
-    // Close menu when clicking outside
-    document.addEventListener("click", function(event) {
-      var menu = document.getElementById("nav-menu");
-      var button = document.getElementById("menu-btn");
-  
-      if (!menu.contains(event.target) && event.target !== button) {
-        menu.classList.remove("show");
-        button.innerHTML = "&#9776;"; // Reset to hamburger icon
-      }
-    });
+     const menuBtn = document.getElementById("menu-btn");
+        const navMenu = document.getElementById("nav-menu");
+        if (menuBtn && navMenu) {
+            menuBtn.addEventListener("click", function(event) {
+                navMenu.classList.toggle("show");
+                if (navMenu.classList.contains("show")) {
+                    menuBtn.innerHTML = "&#10006;";
+                    menuBtn.style.color = "#6fed6f";
+                } else {
+                    menuBtn.innerHTML = "&#9776;";
+                    menuBtn.style.color = "#6fed6f";
+                }
+                event.stopPropagation();
+            });
+            // Close menu when clicking outside
+            document.addEventListener("click", function(event) {
+                if (!navMenu.contains(event.target) && event.target !== menuBtn) {
+                    navMenu.classList.remove("show");
+                    menuBtn.innerHTML = "&#9776;";
+                    menuBtn.style.color = "#6fed6f";
+                }
+            });
+        }
   
     // Profile Menu Toggle
     function toggleProfileMenu(event) {

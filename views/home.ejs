@@ -264,6 +264,7 @@
         <div class="logo">DSA <span>Hub</span></div>
       </a>
       <!-- Hamburger Menu Button -->
+      <button id="menu-btn" class="hamburger">&#9776;</button>
       <nav id="nav-menu" class="nav-links">
         <ul>
           <li><a href="/api/user/home">Solve Questions</a></li>
@@ -624,7 +625,7 @@
           <a href="#" onclick="toggleDropdown('Practice Questions for OA/Conding contests', event)">Practice Questions for OA/Conding contests
             <span class="dropdown-arrow"><i class="fa fa-chevron-right"></i></span>
           </a>
-          <ul id="Practice Questions for OA/Conding contests" class="show">
+          <ul id="Practice Questions for OA/Conding contests" class="hidden">
                 <li>
                   <a href="https://lnkd.in/gHYgRDSZ">
                     <input type="checkbox" class="topic-checkbox" data-topic="Binary Tree Level Order Traversal" /> Dynamic Programming
@@ -732,19 +733,27 @@
   </button>
   <script src="/js/main.js"></script>
   <script>
-    // Toggle Hamburger Menu
+    // Hamburger menu toggle
     const menuBtn = document.getElementById("menu-btn");
-    if (menuBtn) {
-      menuBtn.addEventListener("click", function() {
-        var menu = document.getElementById("nav-menu");
-        var button = document.getElementById("menu-btn");
-        menu.classList.toggle("show");
-        if (menu.classList.contains("show")) {
-          button.innerHTML = "&#10006;";
-          button.style.color = "#6fed6f";
+    const navMenu = document.getElementById("nav-menu");
+    if (menuBtn && navMenu) {
+      menuBtn.addEventListener("click", function(event) {
+        navMenu.classList.toggle("show");
+        if (navMenu.classList.contains("show")) {
+          menuBtn.innerHTML = "&#10006;";
+          menuBtn.style.color = "#6fed6f";
         } else {
-          button.innerHTML = "&#9776;";
-          button.style.color = "#6fed6f";
+          menuBtn.innerHTML = "&#9776;";
+          menuBtn.style.color = "#6fed6f";
+        }
+        event.stopPropagation();
+      });
+      // Close menu when clicking outside
+      document.addEventListener("click", function(event) {
+        if (!navMenu.contains(event.target) && event.target !== menuBtn) {
+          navMenu.classList.remove("show");
+          menuBtn.innerHTML = "&#9776;";
+          menuBtn.style.color = "#6fed6f";
         }
       });
     }

@@ -79,36 +79,41 @@
         </div>
     </div>
     <script>
-        // Toggle Hamburger Menu
-       // Toggle Hamburger Menu
-       document.getElementById("menu-btn").addEventListener("click", function() {
-    var menu = document.getElementById("nav-menu");
-    var button = document.getElementById("menu-btn");
-
-    menu.classList.toggle("show");
-
-    // Toggle between hamburger and close (✖) icon
-    if (menu.classList.contains("show")) {
-        button.innerHTML = "&#10006;"; // Cross icon (✖)
-        button.style.color = "#fff"; // Change color if needed
-    } else {
-        button.innerHTML = "&#9776;"; // Hamburger icon (☰)
-    }
-});
-
-
+        // Hamburger menu toggle
+        const menuBtn = document.getElementById("menu-btn");
+        const navMenu = document.getElementById("nav-menu");
+        if (menuBtn && navMenu) {
+            menuBtn.addEventListener("click", function(event) {
+                navMenu.classList.toggle("show");
+                if (navMenu.classList.contains("show")) {
+                    menuBtn.innerHTML = "&#10006;";
+                    menuBtn.style.color = "#6fed6f";
+                } else {
+                    menuBtn.innerHTML = "&#9776;";
+                    menuBtn.style.color = "#6fed6f";
+                }
+                event.stopPropagation();
+            });
+            // Close menu when clicking outside
+            document.addEventListener("click", function(event) {
+                if (!navMenu.contains(event.target) && event.target !== menuBtn) {
+                    navMenu.classList.remove("show");
+                    menuBtn.innerHTML = "&#9776;";
+                    menuBtn.style.color = "#6fed6f";
+                }
+            });
+        }
 
         function toggleProfileMenu() {
             var menu = document.getElementById("profile-menu");
             menu.style.display = menu.style.display === "block" ? "none" : "block";
         }
 
-        // Close menu when clicking outside
+        // Close profile menu when clicking outside
         document.addEventListener("click", function(event) {
             var profileContainer = document.querySelector(".profile-container");
             var profileMenu = document.getElementById("profile-menu");
-
-            if (!profileContainer.contains(event.target)) {
+            if (profileMenu && profileContainer && !profileContainer.contains(event.target)) {
                 profileMenu.style.display = "none";
             }
         });

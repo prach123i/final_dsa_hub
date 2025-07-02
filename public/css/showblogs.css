@@ -79,10 +79,9 @@ body {
 
 .nav-links ul li a:hover,
 .nav-links ul li a.active {
-  background: linear-gradient(90deg, #6fed6f 0%, #3aeeff 100%);
-  color: #232526;
+  background: linear-gradient(90deg, #21d397 0%, #3aeeff 100%);
+  color: black;
 }
-
 /* Hide .hidden-links by default, show on mobile */
 .hidden-links {
   display: none;
@@ -322,10 +321,55 @@ body {
   display: block;
   padding: 10px 20px;
   text-align: center;
+  text-decoration: none;
 }
 .profile-menu .profile-item:hover {
   background: #21d397;
   color: #181c24;
+}
+
+@media (max-width: 1100px) {
+  .container2 {
+    flex-direction: column;
+    height: auto;
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    position: static;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .card-container {
+    margin-left: 0;
+    padding: 15px;
+  }
+  .blog-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .container2 {
+    flex-direction: column;
+    height: auto;
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    position: static;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .card-container {
+    margin-left: 0;
+    padding: 15px;
+  }
+  .blog-card {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -419,6 +463,13 @@ body {
   .sidebar a.nav-item {
     font-size: 13px;
     padding: 8px 8px 8px 8px;
+  }
+  .card-container {
+    padding: 8px;
+  }
+  .blog-card {
+    width: 100%;
+    min-width: 0;
   }
 }
 

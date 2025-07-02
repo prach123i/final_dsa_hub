@@ -710,46 +710,84 @@ footer .social-links a:hover {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .profile-menu{
-    margin-right: -165px;
-    margin-top: 0px;
-}
-  header .containerfront {
+@media (max-width: 1100px) {
+  .containerfront, .container {
     flex-direction: column;
     align-items: flex-start;
   }
-  header .container {
-    flex-direction: row;
-    align-items: center;
-  }
-
-
   header nav ul {
+    margin-left: 0;
     flex-direction: column;
     gap: 10px;
-    margin-left: -40px;
   }
-
-  .auth-buttons {
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
   .cta-buttons {
-    flex-direction: row;
+    margin-left: 0;
+    flex-direction: column;
     gap: 10px;
-    margin-left:70px;
   }
+}
 
+@media (max-width: 900px) {
+  .containerfront, .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  header nav ul {
+    margin-left: 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cta-buttons {
+    margin-left: 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .containerfront, .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  header nav ul {
+    margin-left: 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cta-buttons {
+    margin-left: 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .steps {
+    flex-direction: column;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .containerfront, .container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 8px;
+  }
+  .cta-buttons {
+    margin-left: 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .steps {
+    flex-direction: column;
+    gap: 10px;
+  }
   .profile-page,
   .image-container,
   .profile-image,
@@ -759,95 +797,36 @@ footer .social-links a:hover {
     height: auto;
     margin-left: 0;
   }
+}
 
-  .fav-sheets .icon,
-  .prep,
-  .prep1,
-  .prep2,
-  .features .feature-grid,
-  .blogs .blog-carousel,
-  .faq .faq-container {
+@media (max-width: 480px) {
+  .containerfront, .container {
     flex-direction: column;
-    margin-left: 0px;
-    align-items: center;
+    align-items: flex-start;
+    padding: 0 4px;
   }
-
-  .prep1 h1 {
-    font-size: 1.5rem;
+  .cta-buttons {
+    margin-left: 0;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .steps {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .profile-page,
+  .image-container,
+  .profile-image,
+  .profile-image1,
+  .image-container1 {
+    width: 100%;
+    height: auto;
     margin-left: 0;
   }
-
-  .prep2 h1 {
-    font-size: 1rem;
-  }
-
-  .prep2 h1 p {
-    font-size: 0.8rem;
-  }
-
-  .feature h3 {
-    font-size: 1.2rem;
-  }
-
-  .feature p {
-    font-size: 0.9rem;
-  }
-
-  .feature-icon {
-    font-size: 2.5rem;
-  }
-
-  .blog-carousel {
-    gap: 15px;
-  }
-
-  .blog-card {
-    flex: 0 0 250px;
-    padding: 15px;
-  }
-
-  .blog-card h3 {
-    font-size: 1.2rem;
-  }
-
-  .blog-card p {
-    font-size: 0.8rem;
-  }
-
-  .blog-card a {
-    font-size: 0.8rem;
-    padding: 8px 12px;
-  }
-}
-.hamburger{
-  display: none;
-}
-@media (max-width: 480px) {
-  .hamburger {
-    display: block;
-    margin-top: 9px;
-    color: var(--text-color) !important;
-  }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 200px;
-    background: var(--card-bg);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    border-radius: 5px;
-  }
-  .nav-links.show {
-    display: block;
-  }
-  .nav-links ul li a {
-    text-decoration: none;
-    font-weight: bold;
-    color: var(--text-color) !important;
-  }
-  
 }
 
 /* --- Glassmorphism for cards and sections --- */
@@ -935,6 +914,27 @@ header, footer {
 
 /* --- Custom hero content background and color --- */
 .hero-content {
+  background: rgba(255,255,255,0.82);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
+  padding: 48px 32px 36px 32px;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #232946;
+  position: relative;
+  z-index: 2;
+  transition: background 0.4s, color 0.4s;
+}
+.dark-theme .hero-content {
+  background: rgba(35,41,70,0.92);
+  color: #ffd60a;
+}
+.hero h1 span, .hero h1 {
+  color: #1abc9c !important;
+}
+.hero p {
+  color: #d31c90 !important;
+}
   background: rgba(255,255,255,0.82);
   border-radius: 24px;
   box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
