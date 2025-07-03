@@ -15,7 +15,7 @@
 
 /* Body and Background */
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', 'Roboto', 'Inter', Arial, sans-serif;
   background: #181c24 !important;
   color: #e0e6ed !important;
   line-height: 1.6;

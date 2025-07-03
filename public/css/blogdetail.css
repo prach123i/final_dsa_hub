@@ -5,7 +5,7 @@
   }
   
   body {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Poppins', 'Roboto', 'Inter', Arial, sans-serif;
     color: #e0e6ed;
     line-height: 1.6;
     min-height: 100vh;

@@ -6,7 +6,7 @@
   }
   
   body {
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: 'Poppins', 'Roboto', 'Inter', Arial, sans-serif;
     background: linear-gradient(120deg, #181c24 60%, #21d397 100%);
     min-height: 100vh;
     display: flex;

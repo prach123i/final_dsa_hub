@@ -51,7 +51,7 @@
 /* General Styles */
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Poppins', 'Roboto', 'Inter', Arial, sans-serif;
   color: var(--text-color);
   background: var(--bg-gradient);
   transition: background 0.4s, color 0.4s;
